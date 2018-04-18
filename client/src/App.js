@@ -38,7 +38,7 @@ class App extends Component {
   //get intial data after the component mounts
   componentDidMount(){
     //get the list of packs(shallow) 
-    axios.get("https://backpacking-gear-tracker.herokuapp.com/pack_lists")
+    axios.get("https://fathomless-headland-84060.herokuapp.com/pack_lists")
     .then(response => {
 
       //set the state with the response
@@ -57,7 +57,7 @@ class App extends Component {
   ///********Pack List API**********///
   //get the deep copy of the pack list with categories and the gear items
   setCurrentPackList(id){
-    axios.get(`https://backpacking-gear-tracker.herokuapp.com/pack_lists/${id}`)
+    axios.get(`https://fathomless-headland-84060.herokuapp.com/pack_lists/${id}`)
     .then(response => {
       //set current packList
       this.setState({
@@ -71,7 +71,7 @@ class App extends Component {
 
 
   createPackList(){
-    axios.post(`https://backpacking-gear-tracker.herokuapp.com/pack_lists`, {
+    axios.post(`https://fathomless-headland-84060.herokuapp.com/pack_lists`, {
       pack_list: {name: "Pack Name"}
     })
     .then(response => {
@@ -96,7 +96,7 @@ class App extends Component {
   //update PackList direct properites (not children)
   updatePackList(editedPackList){
     const packListRequest = {name: editedPackList.name, display_metric: editedPackList.display_metric};
-    axios.put(`https://backpacking-gear-tracker.herokuapp.com/pack_lists/${editedPackList.id}`, {
+    axios.put(`https://fathomless-headland-84060.herokuapp.com/pack_lists/${editedPackList.id}`, {
       pack_list: packListRequest
     })
     .then(response => {
@@ -123,7 +123,7 @@ class App extends Component {
     }
 
     //delete from server
-    axios.delete(`https://backpacking-gear-tracker.herokuapp.com/pack_lists/${deletePackList.id}`)
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com/pack_lists/${deletePackList.id}`)
     .then(response => {
       //remove the pack list and set state
       const updatedPackLists = update(this.state.packLists, {
@@ -158,7 +158,7 @@ class App extends Component {
 
     //meanwhile, make api call to create the category on server
     axios.post(
-      `https://backpacking-gear-tracker.herokuapp.com/categories/`,
+      `https://fathomless-headland-84060.herokuapp.com/categories/`,
       {
         category: newCategory
       })
@@ -213,7 +213,7 @@ class App extends Component {
 
     //then send the request
     axios.put(
-      `https://backpacking-gear-tracker.herokuapp.com/categories/${categoryRequest.id}`,
+      `https://fathomless-headland-84060.herokuapp.com/categories/${categoryRequest.id}`,
       {
         category: categoryRequest
       })
@@ -225,7 +225,7 @@ class App extends Component {
   deleteCategory(categoryIndex){
     var category_weight = this.state.currentPackList.categories[categoryIndex].weight_in_grams
     const category = {id: this.state.currentPackList.categories[categoryIndex].id};
-    axios.delete(`https://backpacking-gear-tracker.herokuapp.com/categories/${category.id}`)
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com/categories/${category.id}`)
     .then(response => {
       const updatedPackList = update(this.state.currentPackList, {
         categories: {
@@ -267,7 +267,7 @@ class App extends Component {
     //assign gear item and send the request
     const gearItem = this.state.currentPackList.categories[categoryIndex].gear_items[gearItemIndex];
     axios.post(
-      `https://backpacking-gear-tracker.herokuapp.com/gear_items/`,
+      `https://fathomless-headland-84060.herokuapp.com/gear_items/`,
       {
         gear_item: gearItem
       })
@@ -359,7 +359,7 @@ class App extends Component {
   //update gear item on the server
   updateGearItem(gearItem){
     axios.put(
-      `https://backpacking-gear-tracker.herokuapp.com/gear_items/${gearItem.id}`,
+      `https://fathomless-headland-84060.herokuapp.com/gear_items/${gearItem.id}`,
       {
         gear_item: gearItem
       })
@@ -372,7 +372,7 @@ class App extends Component {
     //get the gear item and send the delete request
     const gearItem = this.state.currentPackList.categories[categoryIndex].gear_items[gearItemIndex];
     if(gearItem.id){
-      axios.delete(`https://backpacking-gear-tracker.herokuapp.com/gear_items/${gearItem.id}`)
+      axios.delete(`https://fathomless-headland-84060.herokuapp.com/gear_items/${gearItem.id}`)
       .then(response => {
           //upon success remove it from state and subtract the value of it from parent accumulations
           const updatedPackList = update(this.state.currentPackList, {
