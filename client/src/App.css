@@ -1,0 +1,147 @@
+.editor{
+	overflow-y: auto;
+}
+
+/*side-bar*/
+.sidebar{
+	background-color: #20232a;
+	color: white;
+	height: 100vh;
+	position: fixed!important;
+}
+.add-category{
+	float: right;
+}
+
+
+/*pack-list*/
+input.pack-name{
+	font-size: 28px;
+	display: block;
+}
+.pack-list-link{
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+}
+.pack-lists-nav{
+	list-style-type: none;
+	padding-left: 0px;
+}
+.pack-delete{
+	float: right;
+	padding-top: 4px;
+}
+.pack-row{
+	border-bottom: 1px dotted;
+	margin: 0px 10px;
+    padding: 5px 0px;
+}
+.pack-lists-card .card-body{
+	padding: 0px;
+}
+.pack-lists-card{
+	height: 40vh;
+	overflow-y: auto;
+	margin-top: 10px;
+}
+
+
+
+/*Gear item table*/
+.category-header div{
+	background-color: #212529;
+	color: white;
+
+}
+input.weight-input{
+	width: 50%;
+	padding-right: 5px;
+}
+input.weight-input:hover{
+	padding-right: 3px;
+}
+
+.weight-input::-webkit-inner-spin-button, 
+.weight-input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number]{
+		text-align: right;
+}
+
+.category-name{
+	font-size: 24px; 
+}
+
+.top-dotted{
+	border-top: 1px dotted #AAA
+}
+.category-total{
+	border-top: 1px solid;
+}
+
+
+
+/*general*/
+.hidden-submit{
+	display: none;
+}
+.delete{
+	color: #dc3545;
+	cursor: pointer;
+}
+input{
+	
+	padding: 2px; 
+	margin: 0; 
+	border: 0; 
+	width: 100%;
+	
+}
+
+input:hover{
+	padding: 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+.button-icon{
+	padding-right: 5px;
+}
+.add-button{
+	margin-top: 10px;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+	background-color: inherit;
+	color: #28a745!important;
+}
+.inline-title{
+	display: inline;
+}
+
+
+
+/*loader*/
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*
+.table div{
+	padding: .75rem;
+}
+*/

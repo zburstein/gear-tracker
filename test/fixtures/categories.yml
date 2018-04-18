@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pack_list: one
+  name: MyString
+  weight: 9.99
+  metric: MyString
+
+two:
+  pack_list: two
+  name: MyString
+  weight: 9.99
+  metric: MyString
