@@ -1,5 +1,8 @@
 class GearItem < ApplicationRecord
   belongs_to :category
+  has_one :pack, through: :category
+
+
 
 #  after_save -> {self.category.update_weight(diff = (self.weight_in_grams - self.weight_in_grams_before_last_save) * self.quantity) if diff != 0}, if: :overall_weight_changed?
   after_save  :update_category_weight, if: :overall_weight_changed?
