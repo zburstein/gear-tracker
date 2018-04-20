@@ -1,4 +1,4 @@
-class PackList < ApplicationRecord
+class Pack < ApplicationRecord
   has_many :categories, -> {order(created_at: :asc)}, dependent: :destroy
   has_many :gear_items, through: :categories, dependent: :destroy
 
