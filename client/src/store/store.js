@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
 
 const store = createStore(reducer, {
-  packLists: null,
-  currentPackList: null,
+  packs: null,
+  pack: null,
   categories: null,
   gearItems: null
 });
