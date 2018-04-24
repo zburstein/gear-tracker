@@ -4,7 +4,23 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'font-awesome/css/font-awesome.min.css';
+
+
+//redux imports
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from "./reducers/index"
+import {addPack} from "./actions/packActions"
+
+
+const store = createStore(rootReducer);
+
+const unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
+console.log(store.getState());
+store.dispatch(addPack("Got antoer"));
+console.log(store.getState());
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
