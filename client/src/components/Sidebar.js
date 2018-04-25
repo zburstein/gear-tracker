@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PackList from "./PackList"
 
 
 class Sidebar extends Component {

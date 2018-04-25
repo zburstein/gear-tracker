@@ -9,7 +9,7 @@
 	height: 100vh;
 	position: fixed!important;
 }
-.add-category{
+.add-pack{
 	float: right;
 }
 
@@ -19,12 +19,12 @@ input.pack-name{
 	font-size: 28px;
 	display: block;
 }
-.pack-list-link{
+.pack-nav-link{
 	cursor: pointer;
 	text-decoration: none;
 	display: inline-block;
 }
-.pack-lists-nav{
+.packs-nav-list{
 	list-style-type: none;
 	padding-left: 0px;
 }
@@ -37,10 +37,10 @@ input.pack-name{
 	margin: 0px 10px;
     padding: 5px 0px;
 }
-.pack-lists-card .card-body{
+.packs-nav-card .card-body{
 	padding: 0px;
 }
-.pack-lists-card{
+.packs-nav-card{
 	height: 40vh;
 	overflow-y: auto;
 	margin-top: 10px;
