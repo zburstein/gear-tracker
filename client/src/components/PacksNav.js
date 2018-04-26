@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 
 
-const PacksNav = ({packs, onAddPackClick}) => {
+const PacksNav = ({packs, onAddPackClick, onPackSelect}) => {
   return (
     <div>
       <h2 className="inline-title">Packs</h2>
@@ -15,8 +15,8 @@ const PacksNav = ({packs, onAddPackClick}) => {
           <ul className="packs-nav-list">
             {packs.map((pack, index) => (
               <div className="pack-row" key={index}>
-                <li className="pack-nav-link">
-                  {pack}
+                <li className="pack-nav-link" onClick={() => onPackSelect(index)}>
+                  {pack.name}
                 </li>
               </div>
             ))}

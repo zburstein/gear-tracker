@@ -1,9 +1,22 @@
+import Pack from "../components/Pack"
+
 function addPack(pack){
   return{
     type: 'ADD_PACK',
-    pack
+    pack: new Pack()
   }
 }
+
+function selectPack(id){
+  return{
+    type: 'SELECT_CURRENT_PACK',
+    id
+  }
+}
+
+
+
+
 
 function addCategory(category){
   return{
@@ -19,4 +32,4 @@ function addGearItem(gearItem){
   }
 }
 
-export{addPack}
+export{addPack, selectPack}
