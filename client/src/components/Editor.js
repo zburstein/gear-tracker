@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Category from './Category';
-import PackTotals from './PackTotals';
-import FontAwesome from 'react-fontawesome';
 
 
+
+/*
 class Editor extends Component {
 
   render() {
@@ -64,5 +63,6 @@ class Editor extends Component {
 
   }
 }
+*/
 
 export default Editor
