@@ -4,20 +4,20 @@ function packs(state = [], action){
     case "ADD_PACK": 
       return [...state, action.pack];
     case "RECEIVE_PACKS":
-      return action.packs
+      return action.packs;
     case "REMOVE_PACK": 
-      return state.filter(pack => pack.id !== action.id)
+      return state.filter(pack => pack.id !== action.id);
     default: 
-      return [...state]
+      return state;
   }
 }
 
 function currentPack(state = null, action){
   switch(action.type){
     case "SELECT_CURRENT_PACK": 
-      return action.id;//copy of pack index, index, or id? I think index or id
+      return action.id;
     default:
-      return state
+      return state;
   }
 }
 
