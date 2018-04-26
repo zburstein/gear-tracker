@@ -28,6 +28,20 @@ export function getPacks(){
   }
 }
 
+export function createPack(){
+  return function(dispatch){
+    axios.post("http://localhost:3001/packs", {
+      pack: {name: "New Pack"}
+    })
+    .then((response) => {
+      dispatch(addPack(response.data));
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
 export function receivePacks(packs){
   return{
     type: "RECEIVE_PACKS",
