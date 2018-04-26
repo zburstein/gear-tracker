@@ -15,7 +15,7 @@ const PacksNav = ({packs, onAddPackClick, onPackSelect, onPackDelete}) => {
           <ul className="packs-nav-list">
             {packs.map((pack, index) => (
               <div className="pack-row" key={index}>
-                <li className="pack-nav-link" onClick={() => onPackSelect(index)}>
+                <li className="pack-nav-link" onClick={() => onPackSelect(pack.id)}>
                   {pack.name}
                 </li>
                 <FontAwesome name='times-circle' className="delete pack-delete" size="1x" onClick={() => { if (window.confirm('Are you sure you want to delete packList?')) onPackDelete(pack.id) }}/>
