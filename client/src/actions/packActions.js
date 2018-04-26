@@ -1,18 +1,43 @@
 import Pack from "../components/Pack"
+import axios from 'axios';
 
-function addPack(pack){
+export function addPack(pack){
   return{
     type: 'ADD_PACK',
     pack: new Pack()
   }
 }
 
-function selectPack(id){
+export function selectPack(id){
   return{
     type: 'SELECT_CURRENT_PACK',
     id
   }
 }
+
+export function getPacks(){
+  return function(dispatch){
+    axios.get("http://localhost:3001/packs")
+    .then((response) =>{
+      //dispatch load packs
+      dispatch(receivePacks(response.data));
+    })
+   .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
+export function receivePacks(packs){
+  return{
+    type: "RECEIVE_PACKS",
+    packs
+  }
+}
+
+
+
+
 
 
 
@@ -32,4 +57,3 @@ function addGearItem(gearItem){
   }
 }
 
-export{addPack, selectPack}

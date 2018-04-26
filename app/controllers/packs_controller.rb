@@ -4,7 +4,7 @@ class PacksController < ApplicationController
   # GET /packs
   def index
     @packs = Pack.all.order(created_at: "ASC")
-    render json: @packs, except: [:created_at, :updated_at, :weight_in_grams, :display_metric] #include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at]
+    render json: @packs, except: [:created_at, :updated_at] #include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at]
   end
 
   # GET /packs/1

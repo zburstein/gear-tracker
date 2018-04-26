@@ -3,8 +3,10 @@ function packs(state = [], action){
   switch(action.type){
     case "ADD_PACK": 
       return [...state, action.pack];
+    case "RECEIVE_PACKS":
+      return action.packs
     default: 
-      return state.length ? [...state] : [new Pack(1, "PCT")]
+      return [...state]
   }
 }
 
@@ -13,7 +15,7 @@ function currentPack(state = null, action){
     case "SELECT_CURRENT_PACK": 
       return action.id;//copy of pack index, index, or id? I think index or id
     default:
-      return["PCT"]
+      return state
   }
 }
 
