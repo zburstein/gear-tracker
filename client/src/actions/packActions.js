@@ -4,7 +4,7 @@ import axios from 'axios';
 export function addPack(pack){
   return{
     type: 'ADD_PACK',
-    pack: new Pack()
+    pack
   }
 }
 

@@ -4,12 +4,12 @@ class PacksController < ApplicationController
   # GET /packs
   def index
     @packs = Pack.all.order(created_at: "ASC")
-    render json: @packs, except: [:created_at, :updated_at] #include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at]
+    render json: @packs, except: [:created_at, :updated_at] 
   end
 
   # GET /packs/1
   def show
-    render json: @pack, include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at]
+    render json: @pack, except: [:created_at, :updated_at]
   end
 
   # POST /packs
@@ -17,7 +17,7 @@ class PacksController < ApplicationController
     @pack = Pack.new(pack_params)
 
     if @pack.save
-      render json: @pack, include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at], status: :created, location: @pack
+      render json: @pack, except: [:created_at, :updated_at], status: :created, location: @pack
     else
       render json: @pack.errors, status: :unprocessable_entity
     end
