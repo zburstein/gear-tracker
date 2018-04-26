@@ -15,6 +15,21 @@ export function selectPack(id){
   }
 }
 
+export function receivePacks(packs){
+  return{
+    type: "RECEIVE_PACKS",
+    packs
+  }
+}
+
+function removePack(id){
+  return{
+    type: "REMOVE_PACK",
+    id
+  }
+
+}
+
 export function getPacks(){
   return function(dispatch){
     axios.get("http://localhost:3001/packs")
@@ -41,13 +56,19 @@ export function createPack(){
     })
   }
 }
-
-export function receivePacks(packs){
-  return{
-    type: "RECEIVE_PACKS",
-    packs
+export function deletePack(id){
+  return function(dispatch){
+    axios.delete(`http://localhost:3001/packs/${id}`)
+    .then((response) => {
+      dispatch(removePack(id));
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 }
+
+
 
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 
 
-const PacksNav = ({packs, onAddPackClick, onPackSelect}) => {
+const PacksNav = ({packs, onAddPackClick, onPackSelect, onPackDelete}) => {
   return (
     <div>
       <h2 className="inline-title">Packs</h2>
@@ -18,6 +18,7 @@ const PacksNav = ({packs, onAddPackClick, onPackSelect}) => {
                 <li className="pack-nav-link" onClick={() => onPackSelect(index)}>
                   {pack.name}
                 </li>
+                <FontAwesome name='times-circle' className="delete pack-delete" size="1x" onClick={() => { if (window.confirm('Are you sure you want to delete packList?')) onPackDelete(pack.id) }}/>
               </div>
             ))}
           </ul>

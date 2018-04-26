@@ -5,6 +5,8 @@ function packs(state = [], action){
       return [...state, action.pack];
     case "RECEIVE_PACKS":
       return action.packs
+    case "REMOVE_PACK": 
+      return state.filter(pack => pack.id !== action.id)
     default: 
       return [...state]
   }

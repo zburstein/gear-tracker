@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { createPack, selectPack } from "../actions/packActions"
+import { createPack, selectPack, deletePack } from "../actions/packActions"
 import PacksNav from "./PacksNav"
 
 
@@ -13,7 +13,8 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => {
   return{
     onAddPackClick: () => dispatch(createPack()),
-    onPackSelect: (id) => dispatch(selectPack(id))
+    onPackSelect: (id) => dispatch(selectPack(id)),
+    onPackDelete: (id) => dispatch(deletePack(id))
   }
 }
 
