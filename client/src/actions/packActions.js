@@ -1,6 +1,7 @@
 import Pack from "../components/Pack"
 import axios from 'axios';
 
+//add packs to store
 export function addPack(pack){
   return{
     type: 'ADD_PACK',
@@ -8,6 +9,7 @@ export function addPack(pack){
   }
 }
 
+//sets current pack in store
 export function selectPack(id){
   return{
     type: 'SELECT_CURRENT_PACK',
@@ -15,6 +17,7 @@ export function selectPack(id){
   }
 }
 
+//sets packs in store
 export function receivePacks(packs){
   return{
     type: "RECEIVE_PACKS",
@@ -22,6 +25,7 @@ export function receivePacks(packs){
   }
 }
 
+//removes pack from store
 function removePack(id){
   return{
     type: "REMOVE_PACK",
@@ -30,6 +34,7 @@ function removePack(id){
 
 }
 
+//initializer. gets all packs from server
 export function getPacks(){
   return function(dispatch){
     axios.get("http://localhost:3001/packs")
@@ -43,6 +48,7 @@ export function getPacks(){
   }
 }
 
+//makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
     axios.post("http://localhost:3001/packs", {
@@ -56,6 +62,8 @@ export function createPack(){
     })
   }
 }
+
+//makes api call to destroy on server and then dispatches removePack
 export function deletePack(id){
   return function(dispatch){
     axios.delete(`http://localhost:3001/packs/${id}`)
@@ -67,28 +75,3 @@ export function deletePack(id){
     })
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-function addCategory(category){
-  return{
-    type: 'ADD_CATEGORY',
-    category
-  }
-}
-
-function addGearItem(gearItem){
-  return{
-    type: 'ADD_GEAR_ITEM',
-    gearItem
-  }
-}
-
