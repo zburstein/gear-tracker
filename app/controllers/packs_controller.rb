@@ -3,7 +3,7 @@ class PacksController < ApplicationController
 
   # GET /packs
   def index
-    @packs = PackList.all.order(created_at: "ASC")
+    @packs = Pack.all.order(created_at: "ASC")
     render json: @packs, except: [:created_at, :updated_at, :weight_in_grams, :display_metric] #include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at]
   end
 
@@ -14,7 +14,7 @@ class PacksController < ApplicationController
 
   # POST /packs
   def create
-    @pack = PackList.new(pack_params)
+    @pack = Pack.new(pack_params)
 
     if @pack.save
       render json: @pack, include: {:categories => {:include => :gear_items}}, except: [:created_at, :updated_at], status: :created, location: @pack
@@ -40,7 +40,7 @@ class PacksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pack
-      @pack = PackList.find(params[:id])
+      @pack = Pack.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
