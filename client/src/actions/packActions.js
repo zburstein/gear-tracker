@@ -41,6 +41,7 @@ export function getPacks(){
     .then((response) =>{
       //dispatch load packs
       dispatch(receivePacks(response.data));
+      dispatch(selectPack(response.data[0].id));
     })
    .catch((err) => {
       console.log(err);
