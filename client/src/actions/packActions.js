@@ -73,6 +73,7 @@ export function createPack(){
 }
 
 export function updatePack(pack){
+  console.log("submitted");
   return function(dispatch){
     axios.put(`http://localhost:3001/packs/${pack.id}`, {
       pack: pack

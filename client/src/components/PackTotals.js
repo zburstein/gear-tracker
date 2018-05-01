@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import convert from 'convert-units';
 
 
+function handleSubmit(event){
+  //if submit, prevent reload and blur, which will trigger submit below
+  if(event.type === "submit"){
+    event.preventDefault();
+    document.activeElement.blur();
+  }
+}
 
 const PackTotals = ({pack, editPack, updatePack}) => {
   if(pack){
     return(
-      <form onSubmit={() => updatePack(pack)} onBlur={() => updatePack(pack)}>
+      <form onSubmit={(event) => handleSubmit(event)} onBlur={() => updatePack(pack)}>
         <input className="pack-name" name="name" value={pack.name} onChange={(event) => editPack(pack.id, event)}/>
         {"Total: " + Math.round( convert(pack.weight_in_grams).from("g").to(pack.display_metric) * 100) / 100}
         <select name="display_metric" value={pack.display_metric} onChange={(event) => editPack(pack.id, event)}>
@@ -26,4 +33,5 @@ const PackTotals = ({pack, editPack, updatePack}) => {
     )
   }
 }
+ 
 export default PackTotals
