@@ -33,10 +33,12 @@ function removePack(id){
   }
 }
 
-export function editPack(event){
+export function editPack(id, event){
   return{
     type: 'EDIT_PACK',
-    [event.target.name]: event.target.value
+    id: id,
+    targetName: event.target.name,
+    value: event.target.value
   }
 }
 
@@ -63,6 +65,20 @@ export function createPack(){
     })
     .then((response) => {
       dispatch(addPack(response.data));
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
+export function updatePack(pack){
+  return function(dispatch){
+    axios.put(`http://localhost:3001/packs/${pack.id}`, {
+      pack: pack
+    })
+    .then((response) => {
+      //do anything to update?
     })
     .catch((err) => {
       console.log(err);

@@ -1,4 +1,6 @@
 import Pack from "../components/Pack"
+import update from 'immutability-helper';
+
 function packs(state = [], action){
   switch(action.type){
     case "ADD_PACK": 
@@ -7,6 +9,11 @@ function packs(state = [], action){
       return action.packs;
     case "REMOVE_PACK": 
       return state.filter(pack => pack.id !== action.id);
+    case "EDIT_PACK":
+      const index = state.map(x => x.id).indexOf(action.id); //get index for immutability helper
+      return update(state, {
+        [index]: {[action.targetName]: {$set: action.value}}
+      });
     default: 
       return state;
   }
