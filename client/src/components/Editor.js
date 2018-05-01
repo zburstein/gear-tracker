@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
+import PackTotalsContainer from "./PackTotalsContainer"
 
+const Editor = () => {
+  return (
+    <div>
+      <PackTotalsContainer/>
+      CateogryList 
+    </div>
+  );
+
+}
+
+export default Editor
 
 
 /*
@@ -65,4 +77,3 @@ class Editor extends Component {
 }
 */
 
-export default Editor

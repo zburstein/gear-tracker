@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { createPack, selectPack, deletePack } from "../actions/packActions"
 import PacksNav from "./PacksNav"
 

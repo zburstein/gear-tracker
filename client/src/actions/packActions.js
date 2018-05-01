@@ -31,7 +31,13 @@ function removePack(id){
     type: "REMOVE_PACK",
     id
   }
+}
 
+export function editPack(event){
+  return{
+    type: 'EDIT_PACK',
+    [event.target.name]: event.target.value
+  }
 }
 
 //initializer. gets all packs from server
