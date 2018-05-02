@@ -21,6 +21,7 @@ store.subscribe(() =>
   console.log(store.getState())
 )
 store.dispatch(getPacks());
+//store.dispatch(getCategories())
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

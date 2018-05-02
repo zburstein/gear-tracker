@@ -1,5 +1,5 @@
 class PacksController < ApplicationController
-  before_action :set_pack, only: [:show, :update, :destroy]
+  before_action :set_pack, only: [:show, :update, :destroy, :categories]
 
   # GET /packs
   def index
@@ -35,6 +35,10 @@ class PacksController < ApplicationController
   # DELETE /packs/1
   def destroy
     @pack.destroy
+  end
+
+  def categories
+    render json: @pack.categories
   end
 
   private

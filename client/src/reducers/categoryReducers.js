@@ -3,7 +3,7 @@ function categories(state = [], action){
     case "ADD_CATEGORY":
       return [...state, action.category];
     default:
-      return ["cat test"]
+      return state
   }
 }
 
