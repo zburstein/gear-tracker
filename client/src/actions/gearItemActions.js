@@ -10,3 +10,11 @@ export function addGearItem(gearItem){
     gearItem
   }
 }
+export function editGearItem(id, event){
+  return{
+    type: 'EDIT_GEAR_ITEM',
+    id: id,
+    targetName: event.target.name,
+    value: event.target.value
+  }
+}

@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import GearItem from "./GearItem";
 
-const GearItemList = () => {
+const GearItemList = ({gearItems, editGearItem}) => {
   return(
     <div>
-      test
+      {gearItems.map((gearItem, index) => (
+        <div>
+          <GearItem gearItem={gearItem} index={index} editGearItem={editGearItem}/>
+        </div>
+      ))}
     </div>
   )
 }
