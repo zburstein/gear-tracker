@@ -1,10 +1,16 @@
 import axios from 'axios';
 
-
+//TODO merge addCategory and setCategories? 
 export function addCategory(category){
   return{
     type: 'ADD_CATEGORY',
     category
+  }
+}
+export function setCategories(categories){
+  return{
+    type: 'SET_CATEGORIES',
+    categories
   }
 }
 

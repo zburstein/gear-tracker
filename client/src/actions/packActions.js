@@ -1,7 +1,7 @@
 import Pack from "../components/Pack"
 import axios from 'axios';
-import {addCategory} from "./categoryActions"
-import {addGearItem} from "./gearItemActions"
+import {setCategories} from "./categoryActions"
+import {setGearItems} from "./gearItemActions"
 
 //add packs to store
 export function addPack(pack){
@@ -49,8 +49,8 @@ export function getPack(id){
   return function(dispatch){
     axios.get(`http://localhost:3001/packs/${id}`)
     .then((response) => {
-      dispatch(addCategory(response.data.categories));
-      dispatch(addGearItem(response.data.gear_items));
+      dispatch(setCategories(response.data.categories));
+      dispatch(setGearItems(response.data.gear_items));
     })
   }
 }

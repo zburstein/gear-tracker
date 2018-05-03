@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import Category from "./Category";
 
 const CategoryList = ({categories, currentPackID, createCategory}) => {
+  console.log(categories);
   return(
     <div>
       <button className="add-button" onClick={() => createCategory(currentPackID)}> 
