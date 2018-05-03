@@ -14,6 +14,15 @@ export function setCategories(categories){
   }
 }
 
+export function editCategory(id, event){
+  return{
+    type: 'EDIT_CATEGORY',
+    id: id,
+    targetName: event.target.name,
+    value: event.target.value
+  }
+}
+
 export function createCategory(packID){
   return function(dispatch){
     axios.post("http://localhost:3001/categories", {

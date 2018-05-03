@@ -9,7 +9,7 @@ const Category = (props) => {
       <div className="row">
         <div className="col-11">
           <form>
-            <input className="category-name" name="name" placeholder="name" type="text" value={props.category.name}/>
+            <input className="category-name" name="name" placeholder="name" type="text" value={props.category.name} onChange={(event) => props.editCategory(props.category.id, event)}/>
           </form>
         </div>
         <div className="col">
