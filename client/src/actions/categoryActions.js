@@ -36,3 +36,17 @@ export function createCategory(packID){
     })
   }
 }
+
+export function updateCategory(category){
+  return function(dispatch){
+    axios.put(`http://localhost:3001/categories/${category.id}`, {
+      category: category
+    })
+    .then((response) => {
+      //do nothing?
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}

@@ -3,12 +3,20 @@ import GearItem from './GearItem';
 import FontAwesome from 'react-fontawesome';
 import convert from 'convert-units';
 
+function handleSubmit(event){
+  //if submit, prevent reload and blur, which will trigger submit below
+  if(event.type === "submit"){
+    event.preventDefault();
+    document.activeElement.blur();
+  }
+}
+
 const Category = (props) => {
   return(
     <div>
       <div className="row">
         <div className="col-11">
-          <form>
+          <form onSubmit={(event) => handleSubmit(event)} onBlur={() => props.updateCategory(props.category)}>
             <input className="category-name" name="name" placeholder="name" type="text" value={props.category.name} onChange={(event) => props.editCategory(props.category.id, event)}/>
           </form>
         </div>

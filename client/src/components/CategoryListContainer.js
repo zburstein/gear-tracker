@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoryList from "./CategoryList";
-import {createCategory, editCategory} from "../actions/categoryActions"
+import {createCategory, editCategory, updateCategory} from "../actions/categoryActions"
 
 const mapStateToProps = state => {
   return{
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return{
     createCategory: (currentPackID) => dispatch(createCategory(currentPackID)),
-    editCategory: (id, event) => dispatch(editCategory(id, event))
+    editCategory: (id, event) => dispatch(editCategory(id, event)),
+    updateCategory: (category) => dispatch(updateCategory(category))
   }
 }
 
