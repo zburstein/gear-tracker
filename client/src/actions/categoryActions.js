@@ -23,6 +23,13 @@ export function editCategory(id, event){
   }
 }
 
+function removeCategory(id){
+  return{
+    type: 'REMOVE_CATEGORY',
+    id
+  }
+}
+
 export function createCategory(packID){
   return function(dispatch){
     axios.post("http://localhost:3001/categories", {
@@ -44,6 +51,19 @@ export function updateCategory(category){
     })
     .then((response) => {
       //do nothing?
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+}
+
+
+export function deleteCategory(id){
+  return function(dispatch){
+    axios.delete(`http://localhost:3001/categories/${id}`)
+    .then((response) => {
+      dispatch(removeCategory(id));
     })
     .catch((err) => {
       console.log(err);

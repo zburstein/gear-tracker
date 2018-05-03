@@ -11,6 +11,8 @@ function categories(state = [], action){
       return update(state, {
         [index]: {[action.targetName]: {$set: action.value}}
       });
+    case "REMOVE_CATEGORY":
+      return state.filter(category => category.id !== action.id)
     default:
       return state
   }
