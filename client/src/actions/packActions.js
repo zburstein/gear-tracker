@@ -1,4 +1,3 @@
-import Pack from "../components/Pack"
 import axios from 'axios';
 import {setCategories} from "./categoryActions"
 import {setGearItems} from "./gearItemActions"
