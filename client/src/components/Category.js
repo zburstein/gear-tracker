@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GearItem from './GearItem';
 import FontAwesome from 'react-fontawesome';
 import convert from 'convert-units';
+import GearItemListContainer from "./GearItemListContainer";
 
 function handleSubmit(event){
   //if submit, prevent reload and blur, which will trigger submit below
@@ -34,7 +35,7 @@ const Category = (props) => {
           <div className="col-1"></div>
         </div>
 
-        //iterate gear gear_items
+        <GearItemListContainer categoryID={props.category.id}/>
 
         <div className="row category-total">
           <div className="col-9">

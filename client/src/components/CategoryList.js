@@ -3,7 +3,6 @@ import FontAwesome from 'react-fontawesome';
 import Category from "./Category";
 
 const CategoryList = ({categories, currentPackID, createCategory, editCategory, updateCategory, deleteCategory}) => {
-  console.log(categories);
   return(
     <div>
       {categories.map((category, index) => (
