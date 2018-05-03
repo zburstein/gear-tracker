@@ -1,5 +1,6 @@
 import Pack from "../components/Pack"
 import axios from 'axios';
+import {addCategory} from "./categoryActions"
 
 //add packs to store
 export function addPack(pack){
@@ -42,14 +43,28 @@ export function editPack(id, event){
   }
 }
 
-//initializer. gets all packs from server
-export function getPacks(){
+
+export function getPack(id){
+  return function(dispatch){
+    axios.get(`http://localhost:3001/packs/${id}`)
+    .then((response) => {
+      dispatch(addCategory(response.data.categories));
+    })
+  }
+}
+
+//initializer. gets all packs from server change name to initializer //TODO
+export function initialize(){
   return function(dispatch){
     axios.get("http://localhost:3001/packs")
     .then((response) =>{
-      //dispatch load packs
+      //dispatch recieve packs and set current pack 
       dispatch(receivePacks(response.data));
       dispatch(selectPack(response.data[0].id));
+
+      //get Pack, which will set everything
+      dispatch(getPack(response.data[0].id));
+
     })
    .catch((err) => {
       console.log(err);

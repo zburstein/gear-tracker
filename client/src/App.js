@@ -3,6 +3,9 @@ import './App.css';
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 
+import { connect } from 'react-redux'
+//import { addTodo } from '../actions'
+
 
 const App = () => {
   return (
@@ -21,7 +24,6 @@ const App = () => {
       </div>
     </div>
   );
-
 }
 
 export default App;

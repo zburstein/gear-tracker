@@ -9,7 +9,8 @@ class PacksController < ApplicationController
 
   # GET /packs/1
   def show
-    render json: @pack, except: [:created_at, :updated_at]
+    @pack_response = {pack: @pack, categories: @pack.categories, gear_items: @pack.gear_items}
+    render json: @pack_response, except: [:created_at, :updated_at]
   end
 
   # POST /packs
