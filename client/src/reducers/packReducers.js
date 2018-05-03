@@ -1,4 +1,3 @@
-import Pack from "../components/Pack"
 import update from 'immutability-helper';
 
 function packs(state = [], action){
