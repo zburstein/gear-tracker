@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import GearItemList from "./GearItemList"
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   const gearItems = state.gearItems.filter(gearItem => gearItem.category_id === ownProps.categoryID)
   return{
     gearItems: gearItems,
