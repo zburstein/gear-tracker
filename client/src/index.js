@@ -11,7 +11,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from "./reducers/index"
 import thunkMiddleware from "redux-thunk"
-import {initialize} from "./actions/packActions"
+import {initializeAppData} from "./actions/index"
 
 
 
@@ -20,7 +20,7 @@ const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 store.subscribe(() =>
   console.log(store.getState())
 )
-store.dispatch(initialize());
+store.dispatch(initializeAppData());
 
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

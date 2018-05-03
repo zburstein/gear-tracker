@@ -55,25 +55,6 @@ export function getPack(id){
   }
 }
 
-//initializer. gets all packs from server change name to initializer //TODO
-export function initialize(){
-  return function(dispatch){
-    axios.get("http://localhost:3001/packs")
-    .then((response) =>{
-      //dispatch recieve packs and set current pack 
-      dispatch(receivePacks(response.data));
-      dispatch(selectPack(response.data[0].id));
-
-      //get Pack, which will set everything
-      dispatch(getPack(response.data[0].id));
-
-    })
-   .catch((err) => {
-      console.log(err);
-    })
-  }
-}
-
 //makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
