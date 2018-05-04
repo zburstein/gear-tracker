@@ -47,7 +47,7 @@ export function editGearItem(gearItem, event){
       diff = quantDiff * gearItem.weight_in_grams;
     }
 
-    if(newWeightInGrams === null) newWeightInGrams = gearItem.weight_in_grams; //set it if it has not changed to what it was before
+    if(newWeightInGrams === null || newWeightInGrams === undefined) newWeightInGrams = gearItem.weight_in_grams; //set it if it has not changed to what it was before
     diff = diff || (newWeightInGrams - gearItem.weight_in_grams); //get the diff
 
     //dispatch gear item changes
