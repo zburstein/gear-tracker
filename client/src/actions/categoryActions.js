@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {createGearItem} from "./gearItemActions"
 
 //TODO merge addCategory and setCategories? 
 export function addCategory(category){
@@ -44,7 +45,8 @@ export function createCategory(packID){
       category: {name: "New Category", pack_id: packID}
     })
     .then((response) => {
-      dispatch(addCategory(response.data))
+      dispatch(addCategory(response.data));
+      dispatch(createGearItem(response.data.id))
     })
     .catch((err) => {
       console.log(err);
