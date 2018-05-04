@@ -1,6 +1,8 @@
 import convert from 'convert-units';
 import {adjustPackWeight} from "./packActions";
 import {adjustCategoryWeight} from "./categoryActions";
+import axios from 'axios';
+
 
 
 export function setGearItems(gearItems){
@@ -23,6 +25,39 @@ function recieveEditedGearItem(id, event, newWeight){
     targetName: event.target.name,
     value: event.target.value,
     weight_in_grams: newWeight
+  }
+}
+
+export function updateGearItem(gearItem){
+  return function(dispatch){
+    axios.put(`http://localhost:3001/gear_items/${gearItem.id}`,{
+      gear_item: gearItem
+    })
+     .then((response) => {
+      //do nothing?
+     })
+     .catch((err) => {
+      console.log(err);
+    });
+  }
+}
+
+export function deleteGearItem(id){
+  return function(dispatch){
+    axios.delete(`http://localhost:3001/gear_items/${id}`)
+    .then((response) => {
+      dispatch(removeGearItem(id));
+    })
+     .catch((err) => {
+      console.log(err);
+    });
+  }
+}
+
+function removeGearItem(id){
+  return{
+    type: "REMOVE_GEAR_ITEM",
+    id
   }
 }
 

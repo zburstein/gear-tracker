@@ -19,6 +19,8 @@ export function gearItems(state = [], action){
           }
         }
       });
+    case "REMOVE_GEAR_ITEM":
+      return state.filter(gearItem => gearItem.id !== action.id)
     default:
       return state
   }

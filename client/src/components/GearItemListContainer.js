@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import GearItemList from "./GearItemList";
-import {editGearItem} from "../actions/gearItemActions"
+import {editGearItem, updateGearItem, deleteGearItem} from "../actions/gearItemActions"
 
 const mapStateToProps = (state, ownProps) => {
   const gearItems = state.gearItems.filter(gearItem => gearItem.category_id === ownProps.categoryID)
@@ -11,8 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    editGearItem: (gearItem, event) => dispatch(editGearItem(gearItem, event))
-
+    editGearItem: (gearItem, event) => dispatch(editGearItem(gearItem, event)),
+    updateGearItem: (gearItem) => dispatch(updateGearItem(gearItem)),
+    deleteGearItem: (id) => dispatch(deleteGearItem(id))
   }
 }
 
