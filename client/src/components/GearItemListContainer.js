@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    editGearItem: (id, event) => dispatch(editGearItem(id, event))
+    editGearItem: (gearItem, event) => dispatch(editGearItem(gearItem, event))
 
   }
 }

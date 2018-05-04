@@ -43,6 +43,14 @@ export function editPack(id, event){
   }
 }
 
+export function adjustPackWeight(id, weightChange){
+  return{
+    type: 'ADJUST_PACK_WEIGHT',
+    id,
+    weightChange
+  }
+}
+
 
 export function getPack(id){
   return function(dispatch){

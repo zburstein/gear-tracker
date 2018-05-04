@@ -23,6 +23,14 @@ export function editCategory(id, event){
   }
 }
 
+export function adjustCategoryWeight(id, weightChange){
+  return{
+    type: 'ADJUST_CATEGORY_WEIGHT',
+    id,
+    weightChange
+  }
+}
+
 function removeCategory(id){
   return{
     type: 'REMOVE_CATEGORY',

@@ -9,7 +9,15 @@ export function gearItems(state = [], action){
     case "EDIT_GEAR_ITEM":
       const index = state.map(x => x.id).indexOf(action.id); //get index for immutability helper
       return update(state, {
-        [index]: {[action.targetName]: {$set: action.value}}
+        [index]: {
+          [action.targetName]: {
+            $set: action.value
+          },
+
+          weight_in_grams: {
+            $set: action.weight_in_grams
+          }
+        }
       });
     default:
       return state
