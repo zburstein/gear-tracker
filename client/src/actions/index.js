@@ -11,10 +11,6 @@ export function initializeAppData(){
       //dispatch recieve packs and set current pack 
       dispatch(receivePacks(response.data));
       dispatch(selectPack(response.data[0].id));
-
-      //get Pack, which will set everything
-      dispatch(getPack(response.data[0].id));
-
     })
    .catch((err) => {
       console.log(err);

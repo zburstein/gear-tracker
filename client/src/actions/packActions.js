@@ -11,7 +11,7 @@ export function addPack(pack){
 }
 
 //sets current pack in store
-export function selectPack(id){
+export function setCurrentPack(id){
   return{
     type: 'SELECT_CURRENT_PACK',
     id
@@ -102,5 +102,12 @@ export function deletePack(id){
     .catch((err) => {
       console.log(err);
     })
+  }
+}
+
+export function selectPack(id){
+  return function(dispatch){
+    dispatch(setCurrentPack(id));
+    dispatch(getPack(id));
   }
 }
