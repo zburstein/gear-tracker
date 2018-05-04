@@ -13,7 +13,7 @@ function packs(state = [], action){
       return update(state, {[index]: {[action.targetName]: {$set: action.value}}});
     case "ADJUST_PACK_WEIGHT":
       var index = state.map(x => x.id).indexOf(action.id); //get index for immutability helper
-      return update(state, {[index]: {weight_in_grams: {$apply: function(x) {return x + action.weightChange}}}});
+      return update(state, {[index]: {weight_in_grams: {$apply: function(x) {return parseFloat(x) + action.weightChange}}}});
     default: 
       return state;
   }

@@ -27,8 +27,9 @@ function recieveEditedGearItem(id, event, newWeight){
 }
 
 export function editGearItem(gearItem, event){
-  return function(dispatch){
+  return function(dispatch, getState){
     var newWeightInGrams, diff;
+
 
      //if it is display weight I need to change the weight in grams and parents
     if(event.target.name === "display_weight"){
@@ -53,8 +54,7 @@ export function editGearItem(gearItem, event){
     dispatch(recieveEditedGearItem(gearItem.id, event, newWeightInGrams));
 
     if(diff !== 0){
-      //dispath parent changes
-      //dispatch(adjustPackWeight(diff)); //problem here with the id
+      dispatch(adjustPackWeight(getState().currentPack, diff)); //problem here with the id
       dispatch(adjustCategoryWeight(gearItem.category_id, diff));
     }
 
