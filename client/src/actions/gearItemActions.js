@@ -11,6 +11,21 @@ export function setGearItems(gearItems){
     gearItems
   }
 }
+
+export function createGearItem(categoryID){
+  return function(dispatch){
+    axios.post("http://localhost:3001/gear_items",{
+      gear_item: {category_id: categoryID}
+    })
+    .then((response) => {
+      dispatch(addGearItem(response.data));
+    })
+     .catch((err) => {
+      console.log(err);
+    });
+  }
+}
+
 export function addGearItem(gearItem){
   return{
     type: 'ADD_GEAR_ITEM',

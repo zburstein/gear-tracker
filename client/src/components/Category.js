@@ -39,7 +39,7 @@ const Category = (props) => {
 
         <div className="row category-total">
           <div className="col-9">
-            <button className="add-button" onClick={() => alert("add gear item")}>
+            <button className="add-button" onClick={() => props.createGearItem(props.category.id)}>
                <FontAwesome name='plus' size="1x" className="button-icon"/>
               Add new item
             </button>

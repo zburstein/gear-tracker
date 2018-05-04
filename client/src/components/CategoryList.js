@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import Category from "./Category";
 
-const CategoryList = ({categories, currentPackID, createCategory, editCategory, updateCategory, deleteCategory}) => {
+const CategoryList = ({categories, currentPackID, createCategory, editCategory, updateCategory, deleteCategory, createGearItem}) => {
   return(
     <div>
       {categories.map((category, index) => (
         <div key={index}>
-          <Category category={category} editCategory={editCategory} updateCategory={updateCategory} deleteCategory={deleteCategory}/>
+          <Category category={category} editCategory={editCategory} updateCategory={updateCategory} deleteCategory={deleteCategory} createGearItem={createGearItem}/>
         </div>
       ))}
       <button className="add-button" onClick={() => createCategory(currentPackID)}> 
