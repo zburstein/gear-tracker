@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import {packs, currentPack} from "./packReducers"
+import {packs, currentPackID} from "./packReducers"
 import {categories} from "./categoryReducers"
 import {gearItems} from "./gearItemReducers"
 
 const rootReducer = combineReducers({
   packs,
-  currentPack,
+  currentPackID,
   categories,
   gearItems
 });

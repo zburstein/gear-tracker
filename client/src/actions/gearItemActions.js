@@ -113,7 +113,7 @@ export function editGearItem(gearItem, event){
 
     //if the weight has changed then update the parents' weight
     if(diff !== 0){
-      dispatch(adjustPackWeight(getState().currentPack, diff)); //problem here with the id
+      dispatch(adjustPackWeight(getState().currentPackID, diff)); //problem here with the id
       dispatch(adjustCategoryWeight(gearItem.category_id, diff));
     }
   }

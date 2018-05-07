@@ -19,7 +19,7 @@ function packs(state = [], action){
   }
 }
 
-function currentPack(state = null, action){
+function currentPackID(state = null, action){
   switch(action.type){
     case "SELECT_CURRENT_PACK": 
       return action.id;
@@ -29,7 +29,7 @@ function currentPack(state = null, action){
 }
 
 
-export {packs, currentPack}
+export {packs, currentPackID}
 
 
 

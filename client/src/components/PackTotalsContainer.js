@@ -4,7 +4,7 @@ import PackTotals from './PackTotals';
 import {editPack, updatePack} from "../actions/packActions";
 
 const mapStateToProps = state => {
-  const pack = state.packs.find(pack => pack.id === state.currentPack);
+  const pack = state.packs.find(pack => pack.id === state.currentPackID);
   return{
     pack: pack
   }

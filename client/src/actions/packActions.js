@@ -103,7 +103,7 @@ export function deletePack(id){
       const state = getState();
 
       //if current pack being deleted, then need to select new pack
-      if(state.currentPack == id){
+      if(state.currentPackID == id){
         //if it is the last in the list, then select the previous one, else select the next
         const deleteIndex = state.packs.map(x => x.id).indexOf(id); //get index
         const newPackID = (deleteIndex === state.packs.length - 1) ? state.packs[deleteIndex - 1].id : state.packs[deleteIndex + 1].id;
