@@ -96,10 +96,24 @@ export function updatePack(pack){
 
 //makes api call to destroy on server and then dispatches removePack
 export function deletePack(id){
-  return function(dispatch){
+  return function(dispatch, getState){
     axios.delete(`http://localhost:3001/packs/${id}`)
     .then((response) => {
+      //get state
+      const state = getState();
+
+      //if current pack being deleted, then need to select new pack
+      if(state.currentPack == id){
+        //if it is the last in the list, then select the previous one, else select the next
+        const deleteIndex = state.packs.map(x => x.id).indexOf(id); //get index
+        const newPackID = (deleteIndex === state.packs.length - 1) ? state.packs[deleteIndex - 1].id : state.packs[deleteIndex + 1].id;
+        dispatch(selectPack(newPackID));
+      }
+
+      //and remove the old one
       dispatch(removePack(id));
+
+
     })
     .catch((err) => {
       console.log(err);
