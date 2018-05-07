@@ -70,6 +70,7 @@ export function createPack(){
     })
     .then((response) => {
       dispatch(addPack(response.data));
+      dispatch(selectPack(response.data.id));
     })
     .catch((err) => {
       console.log(err);
