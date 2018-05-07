@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setCategories} from "./categoryActions"
+import {setCategories, createCategory} from "./categoryActions"
 import {setGearItems} from "./gearItemActions"
 
 //add packs to store
@@ -70,6 +70,7 @@ export function createPack(){
     })
     .then((response) => {
       dispatch(addPack(response.data));
+      dispatch(createCategory(response.data.id));
       dispatch(selectPack(response.data.id));
     })
     .catch((err) => {
