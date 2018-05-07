@@ -5,9 +5,10 @@ import {createCategory, editCategory, updateCategory, deleteCategory} from "../a
 import {createGearItem} from "../actions/gearItemActions"
 
 const mapStateToProps = state => {
+  const pack = state.packs.find(pack => pack.id === state.currentPack);
   return{
     categories: state.categories,
-    currentPackID: state.currentPack
+    currentPack: pack
   }
 }
 

@@ -45,8 +45,7 @@ const Category = (props) => {
             </button>
           </div>
           <div className="col-2">
-            {/*Math.round(convert(props.category.weight_in_grams).from("g").to(props.category.display_metric) * 100) / 100 + props.category.display_metric*/}
-            {props.category.weight_in_grams}
+            {Math.round(convert(props.category.weight_in_grams).from("g").to(props.displayMetric) * 100) / 100 + props.displayMetric}
           </div>
         </div>
       </div>
