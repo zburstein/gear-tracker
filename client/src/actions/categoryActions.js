@@ -42,7 +42,7 @@ function removeCategory(id){
 export function createCategory(packID){
   return function(dispatch){
     axios.post("http://localhost:3001/categories", {
-      category: {name: "New Category", pack_id: packID}
+      category: {pack_id: packID}
     })
     .then((response) => {
       dispatch(addCategory(response.data));
