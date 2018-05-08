@@ -6,7 +6,7 @@ import axios from 'axios';
 //initializer. gets all packs, current pack, categories, and gear items, and set all appropriate data
 export function initializeAppData(){
   return function(dispatch){
-    axios.get("http://localhost:3001/packs")
+    axios.get("https://fathomless-headland-84060.herokuapp.com/packs")
     .then((response) =>{
       //dispatch recieve packs and set current pack 
       dispatch(receivePacks(response.data));

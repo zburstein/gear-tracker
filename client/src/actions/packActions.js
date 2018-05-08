@@ -54,7 +54,7 @@ export function adjustPackWeight(id, weightChange){
 
 export function getPack(id){
   return function(dispatch){
-    axios.get(`http://localhost:3001/packs/${id}`)
+    axios.get(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
     .then((response) => {
       dispatch(setCategories(response.data.categories));
       dispatch(setGearItems(response.data.gear_items));
@@ -65,7 +65,7 @@ export function getPack(id){
 //makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
-    axios.post("http://localhost:3001/packs", {
+    axios.post("https://fathomless-headland-84060.herokuapp.com/packs", {
       pack: {name: "New Pack"}
     })
     .then((response) => {
@@ -82,7 +82,7 @@ export function createPack(){
 export function updatePack(pack){
   console.log("submitted");
   return function(dispatch){
-    axios.put(`http://localhost:3001/packs/${pack.id}`, {
+    axios.put(`https://fathomless-headland-84060.herokuapp.com/packs/${pack.id}`, {
       pack: pack
     })
     .then((response) => {
@@ -97,7 +97,7 @@ export function updatePack(pack){
 //makes api call to destroy on server and then dispatches removePack
 export function deletePack(id){
   return function(dispatch, getState){
-    axios.delete(`http://localhost:3001/packs/${id}`)
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
     .then((response) => {
       //get state
       const state = getState();
