@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PackTotalsContainer from "./PackTotalsContainer"
 import CategoryListContainer from "./CategoryListContainer"
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
 
@@ -7,7 +7,7 @@ const PacksNav = ({packs, onAddPackClick, onPackSelect, onPackDelete}) => {
     <div>
       <h2 className="inline-title">Packs</h2>
       <button className="add-button add-pack" onClick={() => onAddPackClick()}>
-        <FontAwesome name='plus' size="1x" className="button-icon"/>
+        <FontAwesome name='plus' size="lg" className="button-icon"/>
         Add new list
       </button>
       <div className="card text-white bg-secondary packs-nav-card">
@@ -18,7 +18,7 @@ const PacksNav = ({packs, onAddPackClick, onPackSelect, onPackDelete}) => {
                 <li className="pack-nav-link" onClick={() => onPackSelect(pack.id)}>
                   {pack.name}
                 </li>
-                <FontAwesome name='times-circle' className="delete pack-delete" size="1x" onClick={() => { if (window.confirm('Are you sure you want to delete packList?')) onPackDelete(pack.id) }}/>
+                <FontAwesome name='times-circle' className="delete pack-delete" size="lg" onClick={() => { if (window.confirm('Are you sure you want to delete packList?')) onPackDelete(pack.id) }}/>
               </div>
             ))}
           </ul>

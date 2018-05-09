@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import GearItem from './GearItem';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import convert from 'convert-units';
 import GearItemListContainer from "./GearItemListContainer";
@@ -40,7 +39,7 @@ const Category = (props) => {
         <div className="row category-total">
           <div className="col-9">
             <button className="add-button" onClick={() => props.createGearItem(props.category.id)}>
-               <FontAwesome name='plus' size="1x" className="button-icon"/>
+               <FontAwesome name='plus' size="lg" className="button-icon"/>
               Add new item
             </button>
           </div>

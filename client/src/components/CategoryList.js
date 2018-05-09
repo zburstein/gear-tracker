@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import Category from "./Category";
 
@@ -8,12 +8,10 @@ const CategoryList = ({categories, currentPack, createCategory, editCategory, up
   return(
     <div>
       {categories.map((category, index) => (
-        <div key={index}>
-          <Category category={category} editCategory={editCategory} updateCategory={updateCategory} deleteCategory={deleteCategory} createGearItem={createGearItem} displayMetric={currentPack.display_metric}/>
-        </div>
+          <Category key={index} category={category} editCategory={editCategory} updateCategory={updateCategory} deleteCategory={deleteCategory} createGearItem={createGearItem} displayMetric={currentPack.display_metric}/>
       ))}
       <button className="add-button" onClick={() => createCategory(currentPack.id)}> 
-        <FontAwesome name='plus' size="1x" className="button-icon"/>
+        <FontAwesome name='plus' size="lg" className="button-icon"/>
         Add category
       </button>
     </div>

@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import './App.css';
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
-
-import { connect } from 'react-redux'
-//import { addTodo } from '../actions'
 
 
 const App = () => {

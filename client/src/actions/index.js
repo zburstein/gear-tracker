@@ -1,4 +1,4 @@
-import {receivePacks, selectPack, getPack} from "./packActions"
+import {receivePacks, selectPack} from "./packActions"
 import axios from 'axios';
 
 

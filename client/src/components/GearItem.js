@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
 function handleSubmit(event){
@@ -25,7 +25,7 @@ const GearItem = (props) => {
           </select>
         </div>
         <div className="col-1"><input name="quantity" placeholder="qty" type="number" min="0" step="1" value={props.gearItem.quantity} onChange={(event) => props.editGearItem(props.gearItem, event)}/></div>   
-        <div className="col-1"><FontAwesome name='times-circle' className="delete" size="1x" onClick={() => { if (window.confirm('Are you sure you want to delete item?')) props.deleteGearItem(props.gearItem.id) }}/></div>
+        <div className="col-1"><FontAwesome name='times-circle' className="delete" size="lg" onClick={() => { if (window.confirm('Are you sure you want to delete item?')) props.deleteGearItem(props.gearItem.id) }}/></div>
       </div>
       <input className="hidden-submit" type="submit" value="Submit" />
     </form> 

@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoryList from "./CategoryList";
 import {createCategory, editCategory, updateCategory, deleteCategory} from "../actions/categoryActions"

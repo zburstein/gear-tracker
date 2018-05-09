@@ -97,7 +97,7 @@ export function editGearItem(gearItem, event){
 
     //if it is quantity I need to change parents weights 
     if(event.target.name === "quantity"){
-      if(event.target.value % 1 != 0 || parseFloat(event.target.value) < 0){
+      if(event.target.value % 1 !== 0 || parseFloat(event.target.value) < 0){
         alert("Invalid: quantity can not be negative or decimal");
         return;
       }
