@@ -8,7 +8,7 @@ const PacksNav = ({packs, onAddPackClick, onPackSelect, onPackDelete}) => {
       <h2 className="inline-title">Packs</h2>
       <button className="add-button add-pack" onClick={() => onAddPackClick()}>
         <FontAwesome name='plus' size="lg" className="button-icon"/>
-        Add new list
+        Add new pack
       </button>
       <div className="card text-white bg-secondary packs-nav-card">
         <div className="card-body">

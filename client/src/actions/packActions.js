@@ -54,18 +54,29 @@ export function adjustPackWeight(id, weightChange){
 
 export function getPack(id){
   return function(dispatch){
-    axios.get(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
-    .then((response) => {
-      dispatch(setCategories(response.data.categories));
-      dispatch(setGearItems(response.data.gear_items));
-    })
+    //if null, no pack selected so pass empty categories and gear items
+    if(id === null){
+      dispatch(setCategories([]));
+      dispatch(setGearItems([]));
+    }
+    else{
+      axios.get(`http://localhost:3001/packs/${id}`)
+      .then((response) => {
+        dispatch(setCategories(response.data.categories));
+        dispatch(setGearItems(response.data.gear_items));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
   }
 }
 
 //makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
-    axios.post("https://fathomless-headland-84060.herokuapp.com/packs", {
+    axios.post("http://localhost:3001/packs", {
       pack: {name: "New Pack"}
     })
     .then((response) => {
@@ -82,7 +93,7 @@ export function createPack(){
 export function updatePack(pack){
   console.log("submitted");
   return function(dispatch){
-    axios.put(`https://fathomless-headland-84060.herokuapp.com/packs/${pack.id}`, {
+    axios.put(`http://localhost:3001/packs/${pack.id}`, {
       pack: pack
     })
     .then((response) => {
@@ -97,19 +108,28 @@ export function updatePack(pack){
 //makes api call to destroy on server and then dispatches removePack
 export function deletePack(id){
   return function(dispatch, getState){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
+    axios.delete(`http://localhost:3001/packs/${id}`)
     .then((response) => {
       //get state
       const state = getState();
 
       //if current pack being deleted, then need to select new pack
       if(state.currentPackID === id){
+        var newPackID;
+
         //if it is the last in the list, then select the previous one, else select the next
         const deleteIndex = state.packs.map(x => x.id).indexOf(id); //get index
-        const newPackID = (deleteIndex === state.packs.length - 1) ? state.packs[deleteIndex - 1].id : state.packs[deleteIndex + 1].id;
+
+        //////this block is new
+        if(deleteIndex === 0 && state.packs.length === 1){
+          newPackID = null;
+        }
+        else{
+          newPackID = (deleteIndex === state.packs.length - 1) ? state.packs[deleteIndex - 1].id : state.packs[deleteIndex + 1].id;
+        }
+
         dispatch(selectPack(newPackID));
       }
-
       //and remove the old one
       dispatch(removePack(id));
 

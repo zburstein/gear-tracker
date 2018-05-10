@@ -2,16 +2,18 @@ import React  from 'react';
 import './App.css';
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
+import Loader from "./components/Loader";
 
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return{
-    currentPack: state.currentPackID
+    currentPackID: state.currentPackID,
+    isInitiated: state.isInitiated
   }
 }
 
-const App = () => {
+const App = ({currentPackID, isInitiated}) => {
   return (
     <div className="App">
       <div className="container-fluid">
@@ -21,7 +23,7 @@ const App = () => {
           </div>
           <div className="col-9 offset-3 editor">
             <div className="container">
-              <Editor/>
+              {isInitiated ? <Editor currentPackID={currentPackID}/> : <Loader/>}
             </div>
           </div>
         </div>
