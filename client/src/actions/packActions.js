@@ -81,8 +81,9 @@ export function createPack(){
     })
     .then((response) => {
       dispatch(addPack(response.data));
-      dispatch(createCategory(response.data.id));
       dispatch(selectPack(response.data.id));
+      dispatch(createCategory(response.data.id));
+
     })
     .catch((err) => {
       console.log(err);

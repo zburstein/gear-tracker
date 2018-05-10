@@ -46,7 +46,7 @@ export function createCategory(packID){
     })
     .then((response) => {
       dispatch(addCategory(response.data));
-      dispatch(createGearItem(response.data.id))
+      dispatch(createGearItem(response.data.id));
     })
     .catch((err) => {
       console.log(err);
