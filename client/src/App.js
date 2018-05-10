@@ -3,6 +3,13 @@ import './App.css';
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return{
+    currentPack: state.currentPackID
+  }
+}
 
 const App = () => {
   return (
@@ -23,4 +30,5 @@ const App = () => {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App)
+;
