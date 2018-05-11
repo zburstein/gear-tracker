@@ -5,3 +5,9 @@ export function addAlert(err){
     alert: {type: "danger", message: err.message}
   }
 }
+
+export function removeAlert(){
+  return{
+    type: "REMOVE_ALERT",
+  }
+}

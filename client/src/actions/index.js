@@ -19,10 +19,10 @@ export function initializeAppData(){
       dispatch(addAlert(err));
     })
 
-  document.addEventListener('visibilitychange', function(){
-    if(!document.hidden){
-      dispatch(initializeAppData());
-    }
-  })
+    document.addEventListener('visibilitychange', function(){
+      if(!document.hidden){
+        dispatch(initializeAppData());
+      }
+    })
   }
 }

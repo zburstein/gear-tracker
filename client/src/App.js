@@ -5,6 +5,7 @@ import Editor from "./components/Editor";
 import Loader from "./components/Loader";
 import Alert from "./components/Alert"
 import { connect } from 'react-redux';
+import {removeAlert} from "./actions/alertActions";
 
 const mapStateToProps = state => {
   return{
@@ -14,7 +15,13 @@ const mapStateToProps = state => {
   }
 }
 
-const App = ({currentPackID, isInitiated, alert}) => {
+const mapDispatchToProps = dispatch => {
+  return{
+    removeAlert: () => dispatch(removeAlert())
+  }
+}
+
+const App = ({currentPackID, isInitiated, alert, removeAlert}) => {
   return (
     <div className="App">
       <div className="container-fluid">
@@ -24,7 +31,7 @@ const App = ({currentPackID, isInitiated, alert}) => {
           </div>
           <div className="col-9 offset-3 editor">
             <div className="container">
-              {alert && <Alert alert={alert}/>}
+              {alert && <Alert alert={alert} removeAlert={removeAlert}/>}
 
               {isInitiated ? <Editor currentPackID={currentPackID}/> : <Loader/>}
             </div>
@@ -35,5 +42,5 @@ const App = ({currentPackID, isInitiated, alert}) => {
   );
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 ;
