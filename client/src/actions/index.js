@@ -18,5 +18,11 @@ export function initializeAppData(){
    .catch((err) => {
       dispatch(addAlert(err));
     })
+
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden){
+      dispatch(initializeAppData());
+    }
+  })
   }
 }
