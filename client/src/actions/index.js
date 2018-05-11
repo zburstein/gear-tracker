@@ -1,6 +1,7 @@
 import {receivePacks, selectPack} from "./packActions"
 import {initiated} from "./isInitiatedActions"
 import axios from 'axios';
+import {addAlert} from "./alertActions"
 
 
 
@@ -15,7 +16,7 @@ export function initializeAppData(){
       dispatch(initiated());
     })
    .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }

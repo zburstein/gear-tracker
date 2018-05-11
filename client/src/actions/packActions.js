@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {setCategories, createCategory} from "./categoryActions"
 import {setGearItems} from "./gearItemActions"
+import {addAlert} from "./alertActions"
 
 //add packs to store
 export function addPack(pack){
@@ -66,7 +67,7 @@ export function getPack(id){
         dispatch(setGearItems(response.data.gear_items));
       })
       .catch((err) => {
-        console.log(err);
+        dispatch(addAlert(err));
       })
     }
 
@@ -86,7 +87,7 @@ export function createPack(){
 
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }
@@ -101,7 +102,7 @@ export function updatePack(pack){
       //do anything to update?
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }
@@ -137,7 +138,7 @@ export function deletePack(id){
 
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }

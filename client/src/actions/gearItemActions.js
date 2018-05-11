@@ -2,6 +2,7 @@ import convert from 'convert-units';
 import {adjustPackWeight} from "./packActions";
 import {adjustCategoryWeight} from "./categoryActions";
 import axios from 'axios';
+import {addAlert} from "./alertActions";
 
 
 
@@ -21,7 +22,7 @@ export function createGearItem(categoryID){
       dispatch(addGearItem(response.data));
     })
      .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     });
   }
 }
@@ -52,7 +53,7 @@ export function updateGearItem(gearItem){
       //do nothing?
      })
      .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     });
   }
 }
@@ -64,7 +65,7 @@ export function deleteGearItem(id){
       dispatch(removeGearItem(id));
     })
      .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     });
   }
 }

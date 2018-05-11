@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {createGearItem} from "./gearItemActions"
+import {addAlert} from "./alertActions"
 
 //TODO merge addCategory and setCategories? 
 export function addCategory(category){
@@ -49,7 +50,7 @@ export function createCategory(packID){
       dispatch(createGearItem(response.data.id));
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }
@@ -63,7 +64,8 @@ export function updateCategory(category){
       //do nothing?
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
+
     })
   }
 }
@@ -76,7 +78,7 @@ export function deleteCategory(id){
       dispatch(removeCategory(id));
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(addAlert(err));
     })
   }
 }
