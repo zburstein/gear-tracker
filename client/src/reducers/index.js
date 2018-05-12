@@ -3,7 +3,7 @@ import {packs, currentPackID} from "./packReducers"
 import {categories} from "./categoryReducers"
 import {gearItems} from "./gearItemReducers"
 import {isInitiated} from "./isInitiatedReducer"
-import {alert} from "./alertreducers.js"
+import {alert} from "./alertReducers.js"
 
 const rootReducer = combineReducers({
   packs,
