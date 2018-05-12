@@ -42,7 +42,7 @@ function removeCategory(id){
 
 export function createCategory(packID){
   return function(dispatch){
-    axios.post("https://fathomless-headland-84060.herokuapp.com/categories", {
+    axios.post("http://localhost:3001/categories", {
       category: {pack_id: packID}
     })
     .then((response) => {
@@ -57,7 +57,7 @@ export function createCategory(packID){
 
 export function updateCategory(category){
   return function(dispatch){
-    axios.put(`https://fathomless-headland-84060.herokuapp.com/categories/${category.id}`, {
+    axios.put(`http://localhost:3001/categories/${category.id}`, {
       category: category
     })
     .then((response) => {
@@ -73,7 +73,7 @@ export function updateCategory(category){
 
 export function deleteCategory(id){
   return function(dispatch){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com/categories/${id}`)
+    axios.delete(`http://localhost:3001/categories/${id}`)
     .then((response) => {
       dispatch(removeCategory(id));
     })

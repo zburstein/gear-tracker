@@ -15,7 +15,7 @@ export function setGearItems(gearItems){
 
 export function createGearItem(categoryID){
   return function(dispatch){
-    axios.post("https://fathomless-headland-84060.herokuapp.com/gear_items",{
+    axios.post("http://localhost:3001/gear_items",{
       gear_item: {category_id: categoryID}
     })
     .then((response) => {
@@ -46,7 +46,7 @@ function recieveEditedGearItem(id, event, newWeight){
 
 export function updateGearItem(gearItem){
   return function(dispatch){
-    axios.put(`https://fathomless-headland-84060.herokuapp.com/gear_items/${gearItem.id}`,{
+    axios.put(`http://localhost:3001/gear_items/${gearItem.id}`,{
       gear_item: gearItem
     })
      .then((response) => {
@@ -60,7 +60,7 @@ export function updateGearItem(gearItem){
 
 export function deleteGearItem(id){
   return function(dispatch){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com/gear_items/${id}`)
+    axios.delete(`http://localhost:3001/gear_items/${id}`)
     .then((response) => {
       dispatch(removeGearItem(id));
     })
