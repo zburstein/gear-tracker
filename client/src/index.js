@@ -16,9 +16,6 @@ import {initializeAppData} from "./actions/index"
 
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
-store.subscribe(() =>
-  console.log(store.getState())
-)
 store.dispatch(initializeAppData());
 
 
