@@ -21,8 +21,27 @@ export function initializeAppData(){
 
     document.addEventListener('visibilitychange', function(){
       if(!document.hidden){
-        dispatch(initializeAppData());
+        dispatch(syncToServer());
       }
     })
+  }
+}
+
+function syncToServer(){
+  return function(dispatch, getState){
+    //getpacks
+    const state = getState();
+
+    axios.get("http://localhost:3001/packs")
+    .then((response) =>{
+      //dispatch recieve packs and set current pack 
+      dispatch(receivePacks(response.data));
+      dispatch(selectPack(state.currentPackID || (response.data.length > 0) ? response.data[0].id : null));
+    })
+   .catch((err) => {
+      dispatch(addAlert(err));
+    })
+
+
   }
 }
