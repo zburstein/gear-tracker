@@ -93,7 +93,7 @@ export function editGearItem(gearItem, event){
 
     //if it is the display metric need to change weight in grams
     if(event.target.name === "display_metric"){
-      newWeightInGrams = convert(gearItem.display_weight).from(event.target.value).to("g");
+      newWeightInGrams = convert(gearItem.display_weight).from(event.target.value).to("g"); 
     }
 
     //if it is quantity I need to change parents weights 
@@ -107,7 +107,7 @@ export function editGearItem(gearItem, event){
     }
 
     if(newWeightInGrams === null || newWeightInGrams === undefined) newWeightInGrams = gearItem.weight_in_grams; //set it if it has not changed to what it was before
-    diff = diff || (newWeightInGrams - gearItem.weight_in_grams); //get the diff
+    diff = diff || (newWeightInGrams - gearItem.weight_in_grams) * gearItem.quantity; //get the diff
 
     //dispatch gear item changes
     dispatch(recieveEditedGearItem(gearItem.id, event, newWeightInGrams));
