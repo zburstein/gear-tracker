@@ -61,7 +61,7 @@ export function getPack(id){
       dispatch(setGearItems([]));
     }
     else{
-      axios.get(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
+      axios.get(`${process.env.REACT_APP_API_ROOT}/packs/${id}`)
       .then((response) => {
         dispatch(setCategories(response.data.categories));
         dispatch(setGearItems(response.data.gear_items));
@@ -77,7 +77,7 @@ export function getPack(id){
 //makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
-    axios.post("https://fathomless-headland-84060.herokuapp.com/packs", {
+    axios.post(`${process.env.REACT_APP_API_ROOT}/packs`, {
       pack: {name: "New Pack"}
     })
     .then((response) => {
@@ -95,7 +95,7 @@ export function createPack(){
 export function updatePack(pack){
   console.log("submitted");
   return function(dispatch){
-    axios.put(`https://fathomless-headland-84060.herokuapp.com/packs/${pack.id}`, {
+    axios.put(`${process.env.REACT_APP_API_ROOT}/packs/${pack.id}`, {
       pack: pack
     })
     .then((response) => {
@@ -110,7 +110,7 @@ export function updatePack(pack){
 //makes api call to destroy on server and then dispatches removePack
 export function deletePack(id){
   return function(dispatch, getState){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com/packs/${id}`)
+    axios.delete(`${process.env.REACT_APP_API_ROOT}/packs/${id}`)
     .then((response) => {
       //get state
       const state = getState();
