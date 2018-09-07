@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
   return{
     editGearItem: (gearItem, event) => dispatch(editGearItem(gearItem, event)),
     updateGearItem: (gearItem) => dispatch(updateGearItem(gearItem)),
-    deleteGearItem: (id) => dispatch(deleteGearItem(id))
+    deleteGearItem: (gearItem) => dispatch(deleteGearItem(gearItem))
   }
 }
 

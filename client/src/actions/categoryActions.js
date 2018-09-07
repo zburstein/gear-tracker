@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {createGearItem} from "./gearItemActions"
 import {addAlert} from "./alertActions"
+import {adjustPackWeight} from "./packActions";
+
 
 //TODO merge addCategory and setCategories? 
 export function addCategory(category){
@@ -71,11 +73,12 @@ export function updateCategory(category){
 }
 
 
-export function deleteCategory(id){
-  return function(dispatch){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com//categories/${id}`)
+export function deleteCategory(category){
+  return function(dispatch, getState){
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com//categories/${category.id}`)
     .then((response) => {
-      dispatch(removeCategory(id));
+      dispatch(removeCategory(category.id));
+      dispatch(adjustPackWeight(getState().currentPackID, -category.weight_in_grams));
     })
     .catch((err) => {
       dispatch(addAlert(err));

@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     createCategory: (currentPackID) => dispatch(createCategory(currentPackID)),
     editCategory: (id, event) => dispatch(editCategory(id, event)),
     updateCategory: (category) => dispatch(updateCategory(category)),
-    deleteCategory: (id) => dispatch(deleteCategory(id)),
+    deleteCategory: (category) => dispatch(deleteCategory(category)),
     createGearItem: (categoryID) => dispatch(createGearItem(categoryID))
   }
 }

@@ -21,7 +21,7 @@ const Category = (props) => {
           </form>
         </div>
         <div className="col">
-          <FontAwesome name='times-circle' className="delete" size="2x" onClick={() => { if (window.confirm('Are you sure you wantt o delete category')) props.deleteCategory(props.category.id)}}/>
+          <FontAwesome name='times-circle' className="delete" size="2x" onClick={() => { if (window.confirm('Are you sure you wantt o delete category')) props.deleteCategory(props.category)}}/>
         </div>
       </div>
 

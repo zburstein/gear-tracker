@@ -58,11 +58,17 @@ export function updateGearItem(gearItem){
   }
 }
 
-export function deleteGearItem(id){
-  return function(dispatch){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com//gear_items/${id}`)
+//delete gear item from server, then dispatch actions to remove from state and adjust pack and category weights
+export function deleteGearItem(gearItem){
+  return function(dispatch, getState){
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com//gear_items/${gearItem.id}`)
     .then((response) => {
-      dispatch(removeGearItem(id));
+      dispatch(removeGearItem(gearItem.id));
+
+      var diff = -(gearItem.weight_in_grams * gearItem.quantity);
+
+      dispatch(adjustCategoryWeight(gearItem.category_id, diff));
+      dispatch(adjustPackWeight(getState().currentPackID, diff));
     })
      .catch((err) => {
       dispatch(addAlert(err));
