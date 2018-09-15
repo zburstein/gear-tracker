@@ -15,7 +15,7 @@ export function setGearItems(gearItems){
 
 export function createGearItem(categoryID){
   return function(dispatch){
-    axios.post(`https://fathomless-headland-84060.herokuapp.com/gear_items`,{
+    axios.post(`${process.env.REACT_APP_API_ROOT}/gear_items`,{
       gear_item: {category_id: categoryID}
     })
     .then((response) => {
@@ -46,7 +46,7 @@ function recieveEditedGearItem(id, event, newWeight){
 
 export function updateGearItem(gearItem){
   return function(dispatch){
-    axios.put(`https://fathomless-headland-84060.herokuapp.com/gear_items/${gearItem.id}`,{
+    axios.put(`${process.env.REACT_APP_API_ROOT}/gear_items/${gearItem.id}`,{
       gear_item: gearItem
     })
      .then((response) => {
@@ -61,7 +61,7 @@ export function updateGearItem(gearItem){
 //delete gear item from server, then dispatch actions to remove from state and adjust pack and category weights
 export function deleteGearItem(gearItem){
   return function(dispatch, getState){
-    axios.delete(`https://fathomless-headland-84060.herokuapp.com/gear_items/${gearItem.id}`)
+    axios.delete(`${process.env.REACT_APP_API_ROOT}/gear_items/${gearItem.id}`)
     .then((response) => {
       dispatch(removeGearItem(gearItem.id));
 
