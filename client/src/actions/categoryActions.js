@@ -44,7 +44,7 @@ function removeCategory(id){
 
 export function createCategory(packID){
   return function(dispatch){
-    axios.post(`${process.env.REACT_APP_API_ROOT}/categories`, {
+    axios.post(`https://fathomless-headland-84060.herokuapp.com/categories`, {
       category: {pack_id: packID}
     })
     .then((response) => {
@@ -59,7 +59,7 @@ export function createCategory(packID){
 
 export function updateCategory(category){
   return function(dispatch){
-    axios.put(`${process.env.REACT_APP_API_ROOT}/categories/${category.id}`, {
+    axios.put(`https://fathomless-headland-84060.herokuapp.com/categories/${category.id}`, {
       category: category
     })
     .then((response) => {
@@ -75,7 +75,7 @@ export function updateCategory(category){
 
 export function deleteCategory(category){
   return function(dispatch, getState){
-    axios.delete(`${process.env.REACT_APP_API_ROOT}/categories/${category.id}`)
+    axios.delete(`https://fathomless-headland-84060.herokuapp.com/categories/${category.id}`)
     .then((response) => {
       dispatch(removeCategory(category.id));
       dispatch(adjustPackWeight(getState().currentPackID, -category.weight_in_grams));
