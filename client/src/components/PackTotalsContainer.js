@@ -5,7 +5,8 @@ import {editPack, updatePack} from "../actions/packActions";
 const mapStateToProps = state => {
   const pack = state.packs.find(pack => pack.id === state.currentPackID);
   return{
-    pack: pack
+    pack: pack,
+    categories: state.categories
   }
 }
 
