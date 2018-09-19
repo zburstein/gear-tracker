@@ -47,6 +47,11 @@ input.pack-name{
 }
 
 
+/*pack totals*/
+.color-ref{
+	padding-right: 5px;
+}
+
 
 /*Gear item table*/
 .category-header div{
@@ -121,6 +126,10 @@ input:hover{
 }
 .inline-title{
 	display: inline;
+}
+
+select[name="display_metric"]{
+	font-size: 13px;
 }
 
 
