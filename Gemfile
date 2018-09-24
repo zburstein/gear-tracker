@@ -25,6 +25,8 @@ gem "ruby-units"
 
 gem "figaro"
 
+gem 'jbuilder', '~> 2.7'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
