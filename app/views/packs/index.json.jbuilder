@@ -2,8 +2,7 @@
 
 
 json.array! @packs do |pack|
-  json.id pack.id
-  json.name pack.name
+  json.merge! pack.attributes.except("created_at", "updated_at")
 end
 
 
