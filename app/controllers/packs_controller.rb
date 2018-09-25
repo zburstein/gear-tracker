@@ -3,8 +3,7 @@ class PacksController < ApplicationController
 
   # GET /packs
   def index
-    @packs = Pack.all.order(created_at: "ASC")
-    render json: @packs, except: [:created_at, :updated_at] 
+    render "index.json.jbuilder"
   end
 
   # GET /packs/1
