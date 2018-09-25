@@ -7,13 +7,17 @@ class Category < ApplicationRecord
   validates :pack, presence: true
   validates :weight_in_grams, presence: true
 
+  after_create :create_gear_item
+
+  def create_gear_item
+    GearItem.create(category: self)
+  end
+
 
   def update_weight(diff = nil)
     self.weight_in_grams += diff
     self.save!
     self.pack.update_weight(diff)
-
-    #self.gear_items.inject(0){|sum, gear| sum + gear.weight_in_grams}
   end
 
 

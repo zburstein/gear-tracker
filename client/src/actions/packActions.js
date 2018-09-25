@@ -79,10 +79,10 @@ export function createPack(){
   return function(dispatch){
     axios.post(`/packs`)
     .then((response) => {
-      dispatch(addPack(response.data));
-      dispatch(selectPack(response.data.id));
-      dispatch(createCategory(response.data.id));
-
+      //response will be new pack list so recieve packs
+      dispatch(receivePacks(response.data));
+      //then select pack (get pack shoudl be updated to pull the correct stuff)
+      dispatch(selectPack(response.data[response.data.length - 1].id));
     })
     .catch((err) => {
       dispatch(addAlert(err));

@@ -16,7 +16,7 @@ class PacksController < ApplicationController
     @pack = Pack.new()
 
     if @pack.save
-      render json: @pack, except: [:created_at, :updated_at], status: :created, location: @pack
+      render "index.json.jbuilder"
     else
       render json: @pack.errors, status: :unprocessable_entity
     end
