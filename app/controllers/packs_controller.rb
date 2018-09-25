@@ -10,6 +10,7 @@ class PacksController < ApplicationController
   # GET /packs/1
   def show
     @pack_response = {pack: @pack, categories: @pack.categories, gear_items: @pack.gear_items}
+    render "show.json.jbuilder"
   end
 
   # POST /packs
