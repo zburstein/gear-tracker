@@ -1,0 +1,5 @@
+class AddDefaultToPacksName < ActiveRecord::Migration[5.1]
+  def change
+    change_column_default :packs, :name, "New Pack"
+  end
+end
