@@ -13,7 +13,7 @@ class PacksController < ApplicationController
 
   # POST /packs
   def create
-    @pack = Pack.new(pack_params)
+    @pack = Pack.new()
 
     if @pack.save
       render json: @pack, except: [:created_at, :updated_at], status: :created, location: @pack

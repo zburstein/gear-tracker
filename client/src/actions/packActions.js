@@ -77,9 +77,7 @@ export function getPack(id){
 //makes api call to create on server then dispatches addPack with the response
 export function createPack(){
   return function(dispatch){
-    axios.post(`/packs`, {
-      pack: {name: "New Pack"}
-    })
+    axios.post(`/packs`)
     .then((response) => {
       dispatch(addPack(response.data));
       dispatch(selectPack(response.data.id));
