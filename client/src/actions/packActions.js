@@ -53,6 +53,7 @@ export function adjustPackWeight(id, weightChange){
 }
 
 
+//get oack and associated objects
 export function getPack(id){
   return function(dispatch){
     //if null, no pack selected so pass empty categories and gear items
@@ -79,10 +80,12 @@ export function createPack(){
   return function(dispatch){
     axios.post(`/packs`)
     .then((response) => {
-      //response will be new pack list so recieve packs
-      dispatch(receivePacks(response.data));
-      //then select pack (get pack shoudl be updated to pull the correct stuff)
-      dispatch(selectPack(response.data[response.data.length - 1].id));
+      //add pack to state and then select it
+      dispatch(addPack(response.data));
+      dispatch(selectPack(response.data.id));
+
+      //create category
+      dispatch(createCategory(response.data.id));
     })
     .catch((err) => {
       dispatch(addAlert(err));
@@ -141,6 +144,7 @@ export function deletePack(id){
   }
 }
 
+//set current pack and pull it and associated objects from db
 export function selectPack(id){
   return function(dispatch){
     dispatch(setCurrentPack(id));
