@@ -11,6 +11,8 @@ export function addCategory(category){
     category
   }
 }
+
+//sets the categories
 export function setCategories(categories){
   return{
     type: 'SET_CATEGORIES',
@@ -18,6 +20,7 @@ export function setCategories(categories){
   }
 }
 
+//edit local category
 export function editCategory(id, event){
   return{
     type: 'EDIT_CATEGORY',
@@ -27,6 +30,7 @@ export function editCategory(id, event){
   }
 }
 
+//adjust category weight in grams by given amount
 export function adjustCategoryWeight(id, weightChange){
   return{
     type: 'ADJUST_CATEGORY_WEIGHT',
@@ -35,6 +39,7 @@ export function adjustCategoryWeight(id, weightChange){
   }
 }
 
+//remove category from state
 function removeCategory(id){
   return{
     type: 'REMOVE_CATEGORY',
@@ -42,6 +47,8 @@ function removeCategory(id){
   }
 }
 
+
+//create a category, add to state, and create a gear_item so user already has one available
 export function createCategory(packID){
   return function(dispatch){
     axios.post(`/categories`, {
@@ -57,6 +64,7 @@ export function createCategory(packID){
   }
 }
 
+//call api to update category on server
 export function updateCategory(category){
   return function(dispatch){
     axios.put(`/categories/${category.id}`, {
@@ -72,7 +80,7 @@ export function updateCategory(category){
   }
 }
 
-
+//call api to delete category on server. Dsipatch action to remove category from state and update weights
 export function deleteCategory(category){
   return function(dispatch, getState){
     axios.delete(`/categories/${category.id}`)

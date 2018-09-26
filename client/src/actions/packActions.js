@@ -84,7 +84,7 @@ export function createPack(){
       dispatch(addPack(response.data));
       dispatch(selectPack(response.data.id));
 
-      //create category
+      //create category so one is already available
       dispatch(createCategory(response.data.id));
     })
     .catch((err) => {
