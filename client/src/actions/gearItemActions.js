@@ -5,7 +5,7 @@ import axios from 'axios';
 import {addAlert} from "./alertActions";
 
 
-
+//sets gear items in state
 export function setGearItems(gearItems){
   return{
     type: 'SET_GEAR_ITEMS',
@@ -13,6 +13,34 @@ export function setGearItems(gearItems){
   }
 }
 
+//add gear item to local state. called after create
+export function addGearItem(gearItem){
+  return{
+    type: 'ADD_GEAR_ITEM',
+    gearItem
+  }
+}
+
+//remove gear item from local state
+function removeGearItem(id){
+  return{
+    type: "REMOVE_GEAR_ITEM",
+    id
+  }
+}
+
+//change edited gear item in local state
+function recieveEditedGearItem(id, event, newWeight){
+  return{
+    type: 'EDIT_GEAR_ITEM',
+    id,
+    targetName: event.target.name,
+    value: event.target.value,
+    weight_in_grams: newWeight
+  }
+}
+
+//create gear item on server and dispatch add action
 export function createGearItem(categoryID){
   return function(dispatch){
     axios.post(`/gear_items`,{
@@ -27,23 +55,7 @@ export function createGearItem(categoryID){
   }
 }
 
-export function addGearItem(gearItem){
-  return{
-    type: 'ADD_GEAR_ITEM',
-    gearItem
-  }
-}
-
-function recieveEditedGearItem(id, event, newWeight){
-  return{
-    type: 'EDIT_GEAR_ITEM',
-    id,
-    targetName: event.target.name,
-    value: event.target.value,
-    weight_in_grams: newWeight
-  }
-}
-
+//update gear item on server
 export function updateGearItem(gearItem){
   return function(dispatch){
     axios.put(`/gear_items/${gearItem.id}`,{
@@ -76,12 +88,7 @@ export function deleteGearItem(gearItem){
   }
 }
 
-function removeGearItem(id){
-  return{
-    type: "REMOVE_GEAR_ITEM",
-    id
-  }
-}
+
 
 export function editGearItem(gearItem, event){
   return function(dispatch, getState){
