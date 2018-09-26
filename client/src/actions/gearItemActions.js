@@ -55,9 +55,10 @@ export function createGearItem(categoryID){
   }
 }
 
-//update gear item on server
+//update gear item on server. Called on blur
 export function updateGearItem(gearItem){
   return function(dispatch){
+    debugger;
     axios.put(`/gear_items/${gearItem.id}`,{
       gear_item: gearItem
     })
@@ -89,7 +90,7 @@ export function deleteGearItem(gearItem){
 }
 
 
-
+//edit gear item on local state
 export function editGearItem(gearItem, event){
   return function(dispatch, getState){
     var newWeightInGrams, diff;
