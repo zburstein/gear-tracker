@@ -1,4 +1,4 @@
-import {receivePacks, selectPack} from "./packActions"
+import {setPacks, selectPack} from "./packActions"
 import {initiated} from "./isInitiatedActions"
 import axios from 'axios';
 import {addAlert} from "./alertActions"
@@ -11,7 +11,7 @@ export function initializeAppData(){
     axios.get(`/packs`)
     .then((response) =>{
       //dispatch recieve packs and set current pack 
-      dispatch(receivePacks(response.data));
+      dispatch(setPacks(response.data));
       dispatch(selectPack(response.data.length > 0 ? response.data[0].id : null));
       dispatch(initiated());
     })
@@ -35,7 +35,7 @@ function syncToServer(){
     axios.get(`/packs`)
     .then((response) =>{
       //dispatch recieve packs and set current pack 
-      dispatch(receivePacks(response.data));
+      dispatch(setPacks(response.data));
       dispatch(selectPack(state.currentPackID || (response.data.length > 0) ? response.data[0].id : null));
     })
    .catch((err) => {

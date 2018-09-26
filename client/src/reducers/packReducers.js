@@ -5,7 +5,7 @@ function packs(state = [], action){
   switch(action.type){
     case "ADD_PACK": 
       return [...state, action.pack];
-    case "RECEIVE_PACKS":
+    case "SET_PACKS":
       return action.packs;
     case "REMOVE_PACK": 
       return state.filter(pack => pack.id !== action.id);

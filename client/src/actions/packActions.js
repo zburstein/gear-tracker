@@ -20,9 +20,9 @@ export function setCurrentPack(id){
 }
 
 //sets packs in store
-export function receivePacks(packs){
+export function setPacks(packs){
   return{
-    type: "RECEIVE_PACKS",
+    type: "SET_PACKS",
     packs
   }
 }
