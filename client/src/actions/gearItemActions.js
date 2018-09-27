@@ -55,7 +55,7 @@ export function createGearItem(categoryID){
   }
 }
 
-//update gear item on server. Called on blur
+//update gear item on server. Called on blur event
 export function updateGearItem(gearItem){
   return function(dispatch){
     debugger;
@@ -90,7 +90,9 @@ export function deleteGearItem(gearItem){
 }
 
 
-//edit gear item on local state
+//edit gear item on local state that also reflect weight changes in category and pack with respective actions
+//***does not update server values*** that is done on blur actions in update gear item//
+//has some redundancy with server in terms of calculating changes on associated object but makes things more immediate and smoother on client
 export function editGearItem(gearItem, event){
   return function(dispatch, getState){
     var newWeightInGrams, diff;
@@ -98,6 +100,7 @@ export function editGearItem(gearItem, event){
 
      //if it is display weight change the weight in grams 
     if(event.target.name === "display_weight"){
+      //reject negative values
       if(parseFloat(event.target.value) < 0){
         alert("Invalid: weight can not be negative");
         return;
@@ -123,7 +126,7 @@ export function editGearItem(gearItem, event){
     if(newWeightInGrams === null || newWeightInGrams === undefined) newWeightInGrams = gearItem.weight_in_grams; //set it if it has not changed to what it was before
     diff = diff || (newWeightInGrams - gearItem.weight_in_grams) * gearItem.quantity; //get the diff
 
-    //dispatch gear item changes
+    //dispatch gear item changes on local state
     dispatch(recieveEditedGearItem(gearItem.id, event, newWeightInGrams));
 
     //if the weight has changed then update the parents' weight
