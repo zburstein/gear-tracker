@@ -56,22 +56,14 @@ export function adjustPackWeight(id, weightChange){
 //get oack and associated objects
 export function getPack(id){
   return function(dispatch){
-    //if null, no pack selected so pass empty categories and gear items
-    if(id === null){
-      dispatch(setCategories([]));
-      dispatch(setGearItems([]));
-    }
-    else{
-      axios.get(`/packs/${id}`)
-      .then((response) => {
-        dispatch(setCategories(response.data.categories));
-        dispatch(setGearItems(response.data.gear_items));
-      })
-      .catch((err) => {
-        dispatch(addAlert(err));
-      })
-    }
-
+    axios.get(`/packs/${id}`)
+    .then((response) => {
+      dispatch(setCategories(response.data.categories));
+      dispatch(setGearItems(response.data.gear_items));
+    })
+    .catch((err) => {
+      dispatch(addAlert(err));
+    })
   }
 }
 
@@ -83,7 +75,7 @@ export function createPack(){
       //add pack to state and then select it
       dispatch(addPack(response.data));
       dispatch(selectPack(response.data.id));
-
+      alert("test");
       //create category so one is already available
       dispatch(createCategory(response.data.id));
     })
@@ -148,6 +140,15 @@ export function deletePack(id){
 export function selectPack(id){
   return function(dispatch){
     dispatch(setCurrentPack(id));
-    dispatch(getPack(id));
+
+    
+    if(id === null){
+      dispatch(setCategories([]));
+      dispatch(setGearItems([]));
+    }
+    else{
+      dispatch(getPack(id));
+    }
+    
   }
 }
