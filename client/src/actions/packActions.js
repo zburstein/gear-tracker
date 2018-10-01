@@ -72,12 +72,11 @@ export function createPack(){
   return function(dispatch){
     axios.post(`/packs`)
     .then((response) => {
-      //add pack to state and then select it
-      dispatch(addPack(response.data));
-      dispatch(selectPack(response.data.id));
-      alert("test");
-      //create category so one is already available
-      dispatch(createCategory(response.data.id));
+      //add pack to state, set it as current, and set its associated
+      dispatch(addPack(response.data.pack));
+      dispatch(setCurrentPack(response.data.pack.id));
+      dispatch(setCategories(response.data.categories));
+      dispatch(setGearItems(response.data.gear_items));
     })
     .catch((err) => {
       dispatch(addAlert(err));
