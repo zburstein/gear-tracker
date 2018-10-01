@@ -35,6 +35,7 @@ function removePack(id){
   }
 }
 
+//edits pack on local 
 export function editPack(id, event){
   return{
     type: 'EDIT_PACK',
@@ -44,6 +45,7 @@ export function editPack(id, event){
   }
 }
 
+//adjusts pack weight on local state by given amount
 export function adjustPackWeight(id, weightChange){
   return{
     type: 'ADJUST_PACK_WEIGHT',
@@ -53,7 +55,7 @@ export function adjustPackWeight(id, weightChange){
 }
 
 
-//get oack and associated objects
+//get pack and associated objects from server and set it locally
 export function getPack(id){
   return function(dispatch){
     axios.get(`/packs/${id}`)
@@ -140,7 +142,7 @@ export function selectPack(id){
   return function(dispatch){
     dispatch(setCurrentPack(id));
 
-    
+    //if no packs then id will be null and need to set empy categories and gear items
     if(id === null){
       dispatch(setCategories([]));
       dispatch(setGearItems([]));
