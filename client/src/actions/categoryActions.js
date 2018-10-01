@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {createGearItem} from "./gearItemActions"
+import {addGearItem} from "./gearItemActions"
 import {addAlert} from "./alertActions"
 import {adjustPackWeight} from "./packActions";
 
@@ -55,8 +55,8 @@ export function createCategory(packID){
       category: {pack_id: packID}
     })
     .then((response) => {
-      dispatch(addCategory(response.data));
-      dispatch(createGearItem(response.data.id));
+      dispatch(addCategory(response.data.category));
+      dispatch(addGearItem(response.data.gear_item));
     })
     .catch((err) => {
       dispatch(addAlert(err));

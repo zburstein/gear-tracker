@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setCategories, createCategory} from "./categoryActions"
+import {setCategories} from "./categoryActions"
 import {setGearItems} from "./gearItemActions"
 import {addAlert} from "./alertActions"
 
