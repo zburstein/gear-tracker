@@ -30,22 +30,27 @@ export function initializeAppData(){
 function syncToServer(){
   return function(dispatch, getState){
 
-    //getpacks
     const state = getState();
 
+    //get packs
     axios.get(`/packs`)
     .then((response) =>{
 
       var newCurrentPack;
 
-      //if null either keep null or pull first pack in list if one may have been added in another context
-      if(state.currentPackID === null){
-        newCurrentPack = (response.data.length > 0) ? response.data[0].id : null;
+      //if all the packs have been deleted then set it to null
+      if(response.data.length == 0){
+        newCurrentPack = null;
       }
-      //if existing one first check that it is present and then either get it or first in list
       else{
-        newCurrentPack = response.data.filter(pack => (pack.id === state.currentPackID)).length > 0 ? state.currentPackID : response.data[0].id;
+        //checks presence of current id in packs. keeps it as current if present else uses first pack
+        newCurrentPack = response.data.filter(pack => (pack.id === state.currentPackID)).length > 0 ?
+          state.currentPackID : 
+          response.data[0].id;
       }
+
+      //select the pack which will update its data and then set packs
+      //set packs must come after in event id is null or else causes errors
       dispatch(selectPack(newCurrentPack));
       dispatch(setPacks(response.data));
 
@@ -53,7 +58,5 @@ function syncToServer(){
    .catch((err) => {
       dispatch(addAlert(err));
     })
-
-
   }
 }
