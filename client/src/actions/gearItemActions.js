@@ -58,7 +58,6 @@ export function createGearItem(categoryID){
 //update gear item on server. Called on blur event
 export function updateGearItem(gearItem){
   return function(dispatch){
-    debugger;
     axios.put(`/gear_items/${gearItem.id}`,{
       gear_item: gearItem
     })

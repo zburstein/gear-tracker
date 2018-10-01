@@ -29,7 +29,6 @@ export function initializeAppData(){
 
 function syncToServer(){
   return function(dispatch, getState){
-
     const state = getState();
 
     //get packs
