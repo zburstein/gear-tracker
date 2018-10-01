@@ -59,7 +59,7 @@ export function createCategory(packID){
       dispatch(addGearItem(response.data.gear_item));
     })
     .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(err.response.data));
     })
   }
 }
@@ -74,7 +74,7 @@ export function updateCategory(category){
       //do nothing?
     })
     .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(err.response.data));
 
     })
   }

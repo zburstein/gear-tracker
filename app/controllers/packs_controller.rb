@@ -13,12 +13,12 @@ class PacksController < ApplicationController
 
   # POST /packs
   def create
-    @pack = Pack.new()
+    @pack = Pack.new(pack_params)
 
     if @pack.save
       render "show.json.jbuilder"
     else
-      render json: @pack.errors, status: :unprocessable_entity
+      render json: @pack.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
     end
   end
 
@@ -27,7 +27,7 @@ class PacksController < ApplicationController
     if @pack.update(pack_params)
       render json: @pack
     else
-      render json: @pack.errors, status: :unprocessable_entity
+      render json: @pack.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
     end
   end
 
@@ -49,5 +49,9 @@ class PacksController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def pack_params
       params.require(:pack).permit(:name, :display_metric)
+    end
+
+    def send_error
+
     end
 end

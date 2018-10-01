@@ -81,7 +81,8 @@ export function createPack(){
       dispatch(setGearItems(response.data.gear_items));
     })
     .catch((err) => {
-      dispatch(addAlert(err));
+      debugger;
+      dispatch(addAlert(err.response.data));
     })
   }
 }
@@ -96,7 +97,7 @@ export function updatePack(pack){
       //do anything to update?
     })
     .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(err.response.data));
     })
   }
 }
