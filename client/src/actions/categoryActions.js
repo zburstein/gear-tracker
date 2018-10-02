@@ -50,7 +50,7 @@ function removeCategory(id){
 }
 
 
-//create a category, add to state, and create a gear_item so user already has one available
+//create a category, add to state the category and gear_item
 export function createCategory(packID){
   return function(dispatch){
     axios.post(`/categories`, {

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :packs
 
-  get "pack/:id/categories", to: "packs#categories", as: "pack_categories"
 
 
   devise_for :users
