@@ -8,6 +8,7 @@ class GearItem < ApplicationRecord
   validates :category, presence: true
   validates :weight_in_grams, presence: true
   validates :quantity, presence: true
+  validates :weight_in_grams, :numericality => { :greater_than_or_equal_to => 0 }
 
 
   def +(other)

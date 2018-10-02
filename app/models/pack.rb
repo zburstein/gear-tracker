@@ -4,6 +4,8 @@ class Pack < ApplicationRecord
 
   validates :weight_in_grams, presence: true
   validates :display_metric, presence: true
+  validates :weight_in_grams, :numericality => { :greater_than_or_equal_to => 0 }
+
 
   after_create :create_category
 
