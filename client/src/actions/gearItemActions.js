@@ -3,6 +3,8 @@ import {adjustPackWeight} from "./packActions";
 import {adjustCategoryWeight} from "./categoryActions";
 import axios from 'axios';
 import {addAlert} from "./alertActions";
+import {errorMessages} from "../errorMessages"
+
 
 
 //sets gear items in state
@@ -50,7 +52,7 @@ export function createGearItem(categoryID){
       dispatch(addGearItem(response.data));
     })
      .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(errorMessages(err)));
     });
   }
 }
@@ -65,7 +67,7 @@ export function updateGearItem(gearItem){
       //do nothing?
      })
      .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(errorMessages(err)));
     });
   }
 }
@@ -83,7 +85,7 @@ export function deleteGearItem(gearItem){
       dispatch(adjustPackWeight(getState().currentPackID, diff));
     })
      .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert([err.message]));
     });
   }
 }

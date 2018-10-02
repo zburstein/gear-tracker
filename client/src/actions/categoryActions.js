@@ -2,6 +2,8 @@ import axios from 'axios';
 import {addGearItem} from "./gearItemActions"
 import {addAlert} from "./alertActions"
 import {adjustPackWeight} from "./packActions";
+import {errorMessages} from "../errorMessages"
+
 
 
 //TODO merge addCategory and setCategories? 
@@ -59,7 +61,7 @@ export function createCategory(packID){
       dispatch(addGearItem(response.data.gear_item));
     })
     .catch((err) => {
-      dispatch(addAlert(err.response.data));
+      dispatch(addAlert(errorMessages(err)));
     })
   }
 }
@@ -74,7 +76,7 @@ export function updateCategory(category){
       //do nothing?
     })
     .catch((err) => {
-      dispatch(addAlert(err.response.data));
+      dispatch(addAlert(errorMessages(err)));
 
     })
   }
@@ -89,7 +91,7 @@ export function deleteCategory(category){
       dispatch(adjustPackWeight(getState().currentPackID, -category.weight_in_grams));
     })
     .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert([err.message]));
     })
   }
 }

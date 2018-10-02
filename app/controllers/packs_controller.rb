@@ -13,12 +13,11 @@ class PacksController < ApplicationController
 
   # POST /packs
   def create
-    @pack = Pack.new(pack_params)
-
+    @pack = Pack.new()
     if @pack.save
       render "show.json.jbuilder"
     else
-      render json: @pack.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -27,7 +26,7 @@ class PacksController < ApplicationController
     if @pack.update(pack_params)
       render json: @pack
     else
-      render json: @pack.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -51,7 +50,7 @@ class PacksController < ApplicationController
       params.require(:pack).permit(:name, :display_metric)
     end
 
-    def send_error
-
+    def send_errors
+      render json: @pack.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
     end
 end

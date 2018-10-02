@@ -19,7 +19,7 @@ class GearItemsController < ApplicationController
     if @gear_item.save
       render json: @gear_item, status: :created, location: @gear_item
     else
-      render json: @gear_item.errors, status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -28,7 +28,7 @@ class GearItemsController < ApplicationController
     if @gear_item.update(gear_item_params)
       render json: @gear_item
     else
-      render json: @gear_item.errors, status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -46,5 +46,9 @@ class GearItemsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def gear_item_params
       params.require(:gear_item).permit(:category_id, :name, :description, :weight_in_grams, :display_metric, :display_weight, :quantity, :worn, :favorite, :consumable, :consumable_base_weight, :picture, :link)
+    end
+
+    def send_errors
+      render json: @gear_item.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
     end
 end

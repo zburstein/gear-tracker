@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
     if @category.save
       render "create.json.jbuilder"
     else
-      render json: @category.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       render json: @category
     else
-      render json: @category.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
+      send_errors
     end
   end
 
@@ -47,5 +47,9 @@ class CategoriesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def category_params
       params.require(:category).permit(:name, :display_metric, :display_weight, :pack_id)
+    end
+
+    def send_errors
+      render json: @category.errors.full_messages.unshift("#{controller_name.capitalize} failed to #{action_name}"), status: :unprocessable_entity
     end
 end
