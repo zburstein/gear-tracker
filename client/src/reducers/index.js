@@ -3,7 +3,8 @@ import {packs, currentPackID} from "./packReducers"
 import {categories} from "./categoryReducers"
 import {gearItems} from "./gearItemReducers"
 import {isInitiated} from "./isInitiatedReducer"
-import {alert} from "./alertReducers.js"
+import {alert} from "./alertReducers"
+import {modal} from "./modalReducers"
 
 const rootReducer = combineReducers({
   packs,
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   categories,
   gearItems,
   isInitiated,
-  alert
+  alert,
+  modal
 });
 
 export default rootReducer

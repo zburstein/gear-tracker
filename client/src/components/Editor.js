@@ -1,11 +1,14 @@
 import React from 'react';
 import PackTotalsContainer from "./PackTotalsContainer"
 import CategoryListContainer from "./CategoryListContainer"
+import ModalContainer from "./ModalContainer"
+
 
 const Editor = (props) => {
   if(props.currentPackID){
     return (
       <div>
+        <ModalContainer/>
         <PackTotalsContainer/>
         <CategoryListContainer/>
       </div>
