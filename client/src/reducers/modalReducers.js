@@ -12,6 +12,8 @@ function modal(state = initialState, action){
       return update(state, {visibility: {$set: action.visibility}})
     case "EDIT_MODAL":
       return update(state, {[action.targetName]: {$set: action.value}})
+    case "CLEAR_FORM":
+      return initialState
     default:
       return state
   }

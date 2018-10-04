@@ -16,6 +16,13 @@ export function editModal(event){
     value: event.target.value
   }
 }
+
+export function clearForm(){
+  return{
+    type: "CLEAR_FORM"
+  }
+}
+
 //submit for login
 export function login(modal){
   return function(dispatch){
@@ -36,6 +43,7 @@ export function login(modal){
         client: response.headers["client"],
         uid: response.headers["uid"]
       }));
+      dispatch(clearForm());
     })
     .catch((err) => {
     })
