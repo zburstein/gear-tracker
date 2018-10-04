@@ -5,7 +5,6 @@ import {gearItems} from "./gearItemReducers"
 import {isInitiated} from "./isInitiatedReducer"
 import {alert} from "./alertReducers"
 import {modal} from "./modalReducers"
-import { reduxTokenAuthReducer } from 'redux-token-auth'
 
 
 const rootReducer = combineReducers({
@@ -15,8 +14,7 @@ const rootReducer = combineReducers({
   gearItems,
   isInitiated,
   alert,
-  modal,
-  reduxTokenAuth: reduxTokenAuthReducer
+  modal
 });
 
 export default rootReducer

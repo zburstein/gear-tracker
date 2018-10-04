@@ -18,15 +18,18 @@ export function editModal(event){
 //submit for login
 export function login(modal){
   return function(dispatch){
-    debugger;
-    axios.post(`/users/sign_in`, {
-      user: {
+    axios.post(`/auth/sign_in`, {
         email: modal.email,
         password: modal.password
-      }
+      
     })
     .then((response) => {
       debugger;
+      //set global header for axios
+      axios.defaults.headers.common["access-token"] = response.headers["access-token"];
+      axios.defaults.headers.common["token-type"] = response.headers["token-type"];
+      axios.defaults.headers.common["client"] =   response.headers["client"];
+      axios.defaults.headers.common["uid"] =   response.headers["uid"];
     })
     .catch((err) => {
       debugger;
