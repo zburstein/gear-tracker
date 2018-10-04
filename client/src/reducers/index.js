@@ -5,6 +5,7 @@ import {gearItems} from "./gearItemReducers"
 import {isInitiated} from "./isInitiatedReducer"
 import {alert} from "./alertReducers"
 import {modal} from "./modalReducers"
+import {user} from "./userReducers"
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   gearItems,
   isInitiated,
   alert,
-  modal
+  modal,
+  user
 });
 
 export default rootReducer

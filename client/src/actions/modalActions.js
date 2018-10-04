@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {setUser} from "./userActions"
 
 //set whether the modal is visible or not
 export function setVisibility(visibility){
@@ -24,15 +25,19 @@ export function login(modal){
       
     })
     .then((response) => {
-      debugger;
       //set global header for axios
       axios.defaults.headers.common["access-token"] = response.headers["access-token"];
       axios.defaults.headers.common["token-type"] = response.headers["token-type"];
       axios.defaults.headers.common["client"] =   response.headers["client"];
       axios.defaults.headers.common["uid"] =   response.headers["uid"];
+      dispatch(setUser({
+        "access-token": response.headers["access-token"],
+        "token-type": response.headers["token-type"],
+        client: response.headers["client"],
+        uid: response.headers["uid"]
+      }));
     })
     .catch((err) => {
-      debugger;
     })
   }
 }
