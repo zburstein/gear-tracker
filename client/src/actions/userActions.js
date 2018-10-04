@@ -4,3 +4,11 @@ export function setUser(user){
     user
   }
 }
+
+export function updateAuth(response){
+  return{
+    type: "UPDATE_AUTH",
+    client: response.headers["client"],
+    "access-token": response.headers["access-token"]
+  }
+}
