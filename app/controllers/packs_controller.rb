@@ -6,7 +6,7 @@ class PacksController < ApplicationController
 
 
   before_action :set_pack, only: [:show, :update, :destroy, :categories]
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   #before_action :set_user_by_token
 
   # GET /packs

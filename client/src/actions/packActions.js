@@ -61,7 +61,7 @@ export function adjustPackWeight(id, weightChange){
 export function getPack(id){
   return function(dispatch, getState){
     const state = getState();
-    axios.get(`/packs/${id}`,{headers: state.user})
+    axios.get(`/packs/${id}`)
     .then((response) => {
       dispatch(setCategories(response.data.categories));
       dispatch(setGearItems(response.data.gear_items));

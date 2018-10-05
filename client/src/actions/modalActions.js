@@ -34,10 +34,10 @@ export function login(modal){
     .then((response) => {
       console.log("successful login " + response);
       //set global header for axios
-      //axios.defaults.headers.common["access-token"] = response.headers["access-token"];
-      //axios.defaults.headers.common["token-type"] = response.headers["token-type"];
-      //axios.defaults.headers.common["client"] =   response.headers["client"];
-      //axios.defaults.headers.common["uid"] =   response.headers["uid"];
+      axios.defaults.headers.common["access-token"] = response.headers["access-token"];
+      axios.defaults.headers.common["token-type"] = response.headers["token-type"];
+      axios.defaults.headers.common["client"] =   response.headers["client"];
+      axios.defaults.headers.common["uid"] =   response.headers["uid"];
       dispatch(setUser({
         "access-token": response.headers["access-token"],
         "token-type": response.headers["token-type"],
