@@ -2,6 +2,8 @@ import {setPacks, selectPack} from "./packActions"
 import {initiated} from "./isInitiatedActions"
 import axios from 'axios';
 import {addAlert} from "./alertActions"
+import {errorMessages} from "../errorMessages"
+
 
 
 
@@ -16,7 +18,7 @@ export function initializeAppData(){
       dispatch(initiated());
     })
    .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(errorMessages(err)));
     })
 
     document.addEventListener('visibilitychange', function(){
@@ -55,7 +57,7 @@ function syncToServer(){
 
     })
    .catch((err) => {
-      dispatch(addAlert(err));
+      dispatch(addAlert(errorMessages(err)));
     })
   }
 }

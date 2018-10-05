@@ -67,6 +67,7 @@ export function getPack(id){
       dispatch(updateAuth(response));
     })
     .catch((err) => {
+      debugger;
       dispatch(addAlert(errorMessages(err)));
     })
   }
