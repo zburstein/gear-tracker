@@ -3,7 +3,6 @@ import {setCategories} from "./categoryActions"
 import {setGearItems} from "./gearItemActions"
 import {addAlert} from "./alertActions"
 import {errorMessages} from "../errorMessages"
-import {updateAuth} from "./userActions"
 
 //add packs to store
 export function addPack(pack){
@@ -59,16 +58,13 @@ export function adjustPackWeight(id, weightChange){
 
 //get pack and associated objects from server and set it locally
 export function getPack(id){
-  return function(dispatch, getState){
-    const state = getState();
+  return function(dispatch){
     axios.get(`/packs/${id}`)
     .then((response) => {
       dispatch(setCategories(response.data.categories));
       dispatch(setGearItems(response.data.gear_items));
-      //dispatch(updateAuth(response));
     })
     .catch((err) => {
-      debugger;
       dispatch(addAlert(errorMessages(err)));
     })
   }
@@ -84,7 +80,6 @@ export function createPack(){
       dispatch(setCurrentPack(response.data.pack.id));
       dispatch(setCategories(response.data.categories));
       dispatch(setGearItems(response.data.gear_items));
-      //dispatch(updateAuth(response));
 
     })
     .catch((err) => {
@@ -101,7 +96,6 @@ export function updatePack(pack){
     })
     .then((response) => {
       //do anything to update?
-      //dispatch(updateAuth(response));
 
     })
     .catch((err) => {
@@ -134,7 +128,6 @@ export function deletePack(id){
         }
 
         dispatch(selectPack(newPackID));
-        //dispatch(updateAuth(response));
 
       }
       //and remove the old one
