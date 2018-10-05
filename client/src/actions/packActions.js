@@ -82,6 +82,8 @@ export function createPack(){
       dispatch(setCurrentPack(response.data.pack.id));
       dispatch(setCategories(response.data.categories));
       dispatch(setGearItems(response.data.gear_items));
+      dispatch(updateAuth(response));
+
     })
     .catch((err) => {
       dispatch(addAlert(errorMessages(err)));
@@ -97,6 +99,8 @@ export function updatePack(pack){
     })
     .then((response) => {
       //do anything to update?
+      dispatch(updateAuth(response));
+
     })
     .catch((err) => {
       dispatch(addAlert(errorMessages(err)));
@@ -128,6 +132,8 @@ export function deletePack(id){
         }
 
         dispatch(selectPack(newPackID));
+        dispatch(updateAuth(response));
+
       }
       //and remove the old one
       dispatch(removePack(id));

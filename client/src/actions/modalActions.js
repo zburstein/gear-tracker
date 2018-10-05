@@ -41,7 +41,8 @@ export function login(modal){
         "access-token": response.headers["access-token"],
         "token-type": response.headers["token-type"],
         client: response.headers["client"],
-        uid: response.headers["uid"]
+        uid: response.headers["uid"],
+        loggedIn: true
       }));
       dispatch(clearForm());
     })

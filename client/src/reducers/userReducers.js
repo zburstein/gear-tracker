@@ -4,11 +4,8 @@ function user(state = {}, action){
   switch(action.type){
     case "SET_USER":
       return action.user
-    case "UPDATE_AUTH":
-      return (update(state, {
-        client: {$set: action.client},
-        "access-token": {$set: action["access-token"]}
-      }))
+    case "SET_UPDATED_AUTH":
+      return (update(state, {"access-token": {$set: action["access-token"]}}))
     default:
       return state
   }

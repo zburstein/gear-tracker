@@ -8,11 +8,13 @@ class PacksController < ApplicationController
 
   # GET /packs/1
   def show
+    debugger
     render "show.json.jbuilder"
   end
 
   # POST /packs
   def create
+    debugger
     @pack = Pack.new()
     if @pack.save
       render "show.json.jbuilder"
@@ -32,6 +34,7 @@ class PacksController < ApplicationController
 
   # DELETE /packs/1
   def destroy
+    debugger
     @pack.destroy
   end
 
