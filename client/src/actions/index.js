@@ -6,8 +6,6 @@ import {errorMessages} from "../errorMessages"
 import {validate, setUser} from "./userActions"
 
 
-
-
 //initializer. gets all packs, current pack, categories, and gear items, and set all appropriate data
 export function initializeAppData(){
   return function(dispatch){
@@ -19,29 +17,29 @@ export function initializeAppData(){
     //then validate to ensure token has not expired
     //dispatch(validate(user)); //need a promise on this to know what to do if its wrong. wrapping in conditional does not work
     //if cant return value from the above set user logged in value based on the validate. need a promise to hold though
-    dispatch(validate(user));
-    Promise.all([
-      dispatch(validate(user))
-    ]).then(() => {
-      //alert("done");
+   
+   //then validate the user
+    dispatch(validate(user)).then((result) => {
+      debugger
+      alert("finished validation");
+      dispatch(getPacks());
+      dispatch(initiated());
+
     })
-    alert("after");
+    //after validate and associated funciton completes then can get packs
+    
+    //alert("getting packs")
+    //dispatch(getPacks());
 
-
-    dispatch(setUser(user));
-
-
+    
     //then can get pack
-
-    dispatch(getPacks());
 
     document.addEventListener('visibilitychange', function(){
       if(!document.hidden){
         dispatch(syncToServer());
       }
     })
-    
-    dispatch(initiated());
+
 
   }
 }
