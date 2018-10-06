@@ -3,47 +3,33 @@ import {initiated} from "./isInitiatedActions"
 import axios from 'axios';
 import {addAlert} from "./alertActions"
 import {errorMessages} from "../errorMessages"
-import {validate, setUser} from "./userActions"
+import {validate} from "./userActions"
 
 
-//initializer. gets all packs, current pack, categories, and gear items, and set all appropriate data
+//initializer. tests user and gets data
 export function initializeAppData(){
   return function(dispatch, getState){
     //first pull user from local
     var user = JSON.parse(localStorage.getItem("user"));
 
-    //what if null? 
-
-    //check validation
-    //if valid set user
-    //if valid and user set, getPacks
-    //after packs recieved, set initiated
-   
-   //then validate the user
-    dispatch(validate(user)).then(() => {
-      alert("finished validation");
-      const state = getState();
-      console.log(state.user)
-      dispatch(getPacks());
+    //if there is a user test to see if its valid
+    if(user){
+      //validate, which sets user if valid. uses promise to control logic flow
+      dispatch(validate(user)).then((result) => {
+        result && dispatch(getPacks()); //if valid then get packs, otherwise do not
+        dispatch(initiated());
+      });
+    }
+    else{
       dispatch(initiated());
+    }
 
-    })
-    alert("tset");
-    //after validate and associated funciton completes then can get packs
-    
-    //alert("getting packs")
-    //dispatch(getPacks());
-
-    
-    //then can get pack
-
+    //add event listener to sync to server on context change and return
     document.addEventListener('visibilitychange', function(){
       if(!document.hidden){
         dispatch(syncToServer());
       }
     })
-
-
   }
 }
 

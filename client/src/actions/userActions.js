@@ -1,31 +1,12 @@
 import axios from 'axios';
 
-
-export function test(user){
-  return function(dispatch){
-    return new Promise(function(resolve, reject) {
-      dispatch(setUser(user));
-      resolve();
-    })
-  }
-}
-
-
 export function setUser(user){
   localStorage.setItem("user", JSON.stringify(user)); //set locally for return
   //set global header for axios
   axios.defaults.headers.common["access-token"] = user["access-token"];
   axios.defaults.headers.common["token-type"] = user["token-type"];
   axios.defaults.headers.common["client"] =   user["client"];
-  axios.defaults.headers.common["uid"] =   user["uid"];
-
-  var x = 0;
-  while(x < 9000){
-    x++;
-  }
-  alert("setting user");
-
-
+  axios.defaults.headers.common["uid"] = user["uid"];
   return{
     type: "SET_USER",
     user
@@ -35,7 +16,9 @@ export function setUser(user){
 
 export function validate(user){
   return function(dispatch){
-    return new Promise(function(resolve, reject) {   
+    //return promise to control logic flow within the initator
+    return new Promise(function(resolve, reject) {  
+      //make api call to test validity of user 
       axios.get("/auth/validate_token", 
         {
           params: {
@@ -46,18 +29,14 @@ export function validate(user){
         }
       )
       .then((response) => {
-        //if valid then set user
-        /*
-        dispatch(test(user)).then(() => {
-          alert("in set user resturn")
-          resolve();
-        });
-        */
+        //if valid then set user. resolve does not finish until dispatch returns
+        //kind of confused why initate action needs promise but this one does not
         dispatch(setUser(user));
-        resolve();
+        resolve(true);
       })
       .catch((err) => {
         //else do nothing and use deault user value
+        resolve(false);
       })
     });
   }
