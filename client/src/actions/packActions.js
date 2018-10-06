@@ -55,6 +55,20 @@ export function adjustPackWeight(id, weightChange){
   }
 }
 
+export function getPacks(){
+  return function(dispatch){
+    axios.get(`/packs`)
+    .then((response) =>{
+      //dispatch recieve packs and set current pack 
+      dispatch(setPacks(response.data));
+      dispatch(selectPack(response.data.length > 0 ? response.data[0].id : null));
+    })
+   .catch((err) => {
+      dispatch(addAlert(errorMessages(err)));
+    })
+  }
+}
+
 
 //get pack and associated objects from server and set it locally
 export function getPack(id){

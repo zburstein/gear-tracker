@@ -1,8 +1,9 @@
-import {setPacks, selectPack} from "./packActions"
+import {setPacks, selectPack, getPacks} from "./packActions"
 import {initiated} from "./isInitiatedActions"
 import axios from 'axios';
 import {addAlert} from "./alertActions"
 import {errorMessages} from "../errorMessages"
+import {validate, setUser} from "./userActions"
 
 
 
@@ -10,22 +11,38 @@ import {errorMessages} from "../errorMessages"
 //initializer. gets all packs, current pack, categories, and gear items, and set all appropriate data
 export function initializeAppData(){
   return function(dispatch){
-    axios.get(`/packs`)
-    .then((response) =>{
-      //dispatch recieve packs and set current pack 
-      dispatch(setPacks(response.data));
-      dispatch(selectPack(response.data.length > 0 ? response.data[0].id : null));
-      dispatch(initiated());
+    //first pull user from local
+    var user = JSON.parse(localStorage.getItem("user"));
+
+    //what if null? 
+
+    //then validate to ensure token has not expired
+    //dispatch(validate(user)); //need a promise on this to know what to do if its wrong. wrapping in conditional does not work
+    //if cant return value from the above set user logged in value based on the validate. need a promise to hold though
+    dispatch(validate(user));
+    Promise.all([
+      dispatch(validate(user))
+    ]).then(() => {
+      //alert("done");
     })
-   .catch((err) => {
-      dispatch(addAlert(errorMessages(err)));
-    })
+    alert("after");
+
+
+    dispatch(setUser(user));
+
+
+    //then can get pack
+
+    dispatch(getPacks());
 
     document.addEventListener('visibilitychange', function(){
       if(!document.hidden){
         dispatch(syncToServer());
       }
     })
+    
+    dispatch(initiated());
+
   }
 }
 
