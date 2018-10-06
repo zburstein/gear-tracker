@@ -8,24 +8,27 @@ import {validate, setUser} from "./userActions"
 
 //initializer. gets all packs, current pack, categories, and gear items, and set all appropriate data
 export function initializeAppData(){
-  return function(dispatch){
+  return function(dispatch, getState){
     //first pull user from local
     var user = JSON.parse(localStorage.getItem("user"));
 
     //what if null? 
 
-    //then validate to ensure token has not expired
-    //dispatch(validate(user)); //need a promise on this to know what to do if its wrong. wrapping in conditional does not work
-    //if cant return value from the above set user logged in value based on the validate. need a promise to hold though
+    //check validation
+    //if valid set user
+    //if valid and user set, getPacks
+    //after packs recieved, set initiated
    
    //then validate the user
-    dispatch(validate(user)).then((result) => {
-      debugger
+    dispatch(validate(user)).then(() => {
       alert("finished validation");
+      const state = getState();
+      console.log(state.user)
       dispatch(getPacks());
       dispatch(initiated());
 
     })
+    alert("tset");
     //after validate and associated funciton completes then can get packs
     
     //alert("getting packs")

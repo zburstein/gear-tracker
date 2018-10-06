@@ -18,7 +18,13 @@ export function setUser(user){
   axios.defaults.headers.common["token-type"] = user["token-type"];
   axios.defaults.headers.common["client"] =   user["client"];
   axios.defaults.headers.common["uid"] =   user["uid"];
+
+  var x = 0;
+  while(x < 9000){
+    x++;
+  }
   alert("setting user");
+
 
   return{
     type: "SET_USER",
@@ -29,34 +35,30 @@ export function setUser(user){
 
 export function validate(user){
   return function(dispatch){
-    return new Promise(function(resolve, reject) {
-   
-    
-    axios.get("/auth/validate_token", 
-      {
-        params: {
-          "access-token": user["access-token"],
-          uid: user["uid"],
-          client: user["client"]
+    return new Promise(function(resolve, reject) {   
+      axios.get("/auth/validate_token", 
+        {
+          params: {
+            "access-token": user["access-token"],
+            uid: user["uid"],
+            client: user["client"]
+          }
         }
-      }
-    )
-    .then((response) => {
-      //if valid then set user
-      var x = 0;
-      while(x < 5000){
-        x++;
-      }
-      //alert("after loop");
-      dispatch(test(user)).then(() => {
-        alert("in set user resturn")
-      });
-    })
-    .catch((err) => {
-      //else do nothing and use deault user value
-    })
-    alert("end of validation");
-    resolve();
+      )
+      .then((response) => {
+        //if valid then set user
+        /*
+        dispatch(test(user)).then(() => {
+          alert("in set user resturn")
+          resolve();
+        });
+        */
+        dispatch(setUser(user));
+        resolve();
+      })
+      .catch((err) => {
+        //else do nothing and use deault user value
+      })
     });
   }
 }
