@@ -6,6 +6,7 @@ import {isInitiated} from "./isInitiatedReducer"
 import {alert} from "./alertReducers"
 import {modal} from "./modalReducers"
 import {user} from "./userReducers"
+import {sessionForm} from "./sessionFormReducers"
 
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   isInitiated,
   alert,
   modal,
+  sessionForm,
   user
 });
 
