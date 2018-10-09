@@ -15,6 +15,7 @@ const Editor = (props) => {
     );
   }
   else{
+  //if logged in
     return(
       <h1 className="text-center">No Packs Exist!<br/>Add one to continue</h1>
     );
