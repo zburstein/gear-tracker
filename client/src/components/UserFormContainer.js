@@ -1,24 +1,26 @@
 import { connect } from 'react-redux';
-import {editForm, login} from "../actions/sessionFormActions"
-import SessionForm from "./SessionForm"
+import {editForm, login, register, toggleFormMode} from "../actions/userFormActions"
+import UserForm from "./UserForm"
 
 
 const mapStateToProps = state => {
   return{
-    sessionForm: state.sessionForm
+    userForm: state.userForm
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return{
     editForm: (event) => dispatch(editForm(event)),
-    login: (form) => dispatch(login(form))
+    login: (form) => dispatch(login(form)),
+    register: (form) => dispatch(register(form)),
+    toggleFormMode: () => dispatch(toggleFormMode())
   }
 }
 
 const UserFormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SessionForm)
+)(UserForm)
 
 export default UserFormContainer

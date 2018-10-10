@@ -19,6 +19,12 @@ export function clearForm(){
   }
 }
 
+export function toggleFormMode(){
+  return{
+    type: "TOGGLE_FORM_MODE"
+  }
+}
+
 //submit for login
 export function login(form){
   return function(dispatch){
@@ -26,6 +32,27 @@ export function login(form){
         email: form.email,
         password: form.password
       
+    })
+    .then((response) => {
+      dispatch(setUser({
+        "access-token": response.headers["access-token"],
+        "token-type": response.headers["token-type"],
+        client: response.headers["client"],
+        uid: response.headers["uid"],
+        loggedIn: true
+      }));
+
+      dispatch(clearForm());
+    })
+    .catch((err) => {
+    })
+  }
+}
+
+export function register(form){
+  return function(dispatch){
+    axios.post('/auth', {
+      form
     })
     .then((response) => {
       dispatch(setUser({
