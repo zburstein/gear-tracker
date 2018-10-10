@@ -8,14 +8,33 @@ function handleSubmit(event, login, userForm, register){
 const UserForm = ({login, editForm, userForm, register, toggleFormMode}) => {
   return(
     <form onSubmit={(event) => handleSubmit(event, login, userForm, register)}>
-      {!userForm.session && <input name="name" placeholder="name" value={userForm.name} onChange={(event) => editForm(event)}/>}
-      <input name="email" placeholder="email" value={userForm.email} onChange={(event) => editForm(event)}/>
-      <input name="password" type="password" placeholder="password" value={userForm.password} onChange={(event) => editForm(event)}/>
-      {!userForm.session && <input name="passwordConfirmation" type="password" placeholder="password confirmation" value={userForm.passwordConfirmation} onChange={(event) => editForm(event)}/>}
+      
+      {!userForm.session && 
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input name="name" className="form-control" value={userForm.name} onChange={(event) => editForm(event)}/>
+        </div>
+      }
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" className="form-control" value={userForm.email} onChange={(event) => editForm(event)}/>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" type="password" className="form-control" value={userForm.password} onChange={(event) => editForm(event)}/>
+      </div>
+
+      {!userForm.session && 
+        <div class="form-group">   
+          <label for="passwordConfirmation">Password Confirmation</label>
+          <input name="passwordConfirmation" type="password" className="form-control" value={userForm.passwordConfirmation} onChange={(event) => editForm(event)}/>
+        </div>
+      }
       <button className="btn btn-primary" type="submit">{userForm.session ? "Login" : "Sign Up"}</button>
       <div>
-        <span onClick={() => toggleFormMode()}>{userForm.session ? "Signup here" : "Log in"}</span> 
-
+        <span className="clickable" onClick={() => toggleFormMode()}>{userForm.session ? "Signup here" : "Log in"}</span> 
       </div>
     </form>
   )

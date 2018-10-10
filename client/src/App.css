@@ -132,6 +132,11 @@ select[name="display_metric"]{
 	font-size: 13px;
 }
 
+.clickable{
+	color: #007bff;
+	cursor: pointer;
+}
+
 
 
 /*loader*/
@@ -186,3 +191,6 @@ select[name="display_metric"]{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
