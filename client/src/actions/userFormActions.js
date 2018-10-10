@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {setUser} from "./userActions"
-import {setVisibility} from "./modalActions"
 
 
 

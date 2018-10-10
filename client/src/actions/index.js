@@ -44,7 +44,7 @@ function syncToServer(){
       var newCurrentPack;
 
       //if all the packs have been deleted then set it to null
-      if(response.data.length == 0){
+      if(response.data.length === 0){
         newCurrentPack = null;
       }
       else{

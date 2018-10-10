@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 //set whether the modal is visible or not
 export function setVisibility(visibility){
   return{

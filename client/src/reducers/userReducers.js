@@ -1,5 +1,3 @@
-import update from 'immutability-helper';
-
 const initialState = {
     "access-token": "",
     "token-type": "",
