@@ -8,7 +8,6 @@ const Editor = (props) => {
   if(props.currentPackID){
     return (
       <div>
-        <LogoutButton/>
         <PackTotalsContainer/>
         <CategoryListContainer/>
       </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import {roundedConvert} from '../roundedConvert';
 import FontAwesome from 'react-fontawesome';
+import LogoutButton from "./LogoutButton"
+
 
 
 
@@ -53,7 +55,15 @@ const PackTotals = ({pack, categories, editPack, updatePack}) => {
   if(pack){
     return(
       <form onSubmit={(event) => handleSubmit(event)} onBlur={() => updatePack(pack)}>
-        <input className="pack-name" name="name" value={pack.name} onChange={(event) => editPack(pack.id, event)}/>
+        <div className="row">
+          <div className="col-10">
+            <input className="pack-name" name="name" value={pack.name} onChange={(event) => editPack(pack.id, event)}/>
+          </div>
+          <div className="col-2">
+            <LogoutButton/>
+          </div>
+        </div>
+
         <div className="row">
 
           
