@@ -52,9 +52,12 @@ export function login(form){
 export function register(form){
   return function(dispatch){
     axios.post('/auth', {
-      form
+      email: form.email,
+      password: form.password,
+      password_confitmation: form.passwordConfitmation
     })
     .then((response) => {
+      debugger;
       dispatch(setUser({
         "access-token": response.headers["access-token"],
         "token-type": response.headers["token-type"],
@@ -66,6 +69,7 @@ export function register(form){
       dispatch(clearForm());
     })
     .catch((err) => {
+      debugger
     })
   }
 }

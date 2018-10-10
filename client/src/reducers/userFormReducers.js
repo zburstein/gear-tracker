@@ -4,7 +4,8 @@ const initialState = {
   email: "",
   password: "",
   name: "",
-  session: true
+  session: true,
+  passwordConfirmation: ""
 };
 
 function userForm(state = initialState, action){
