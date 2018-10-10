@@ -2,6 +2,7 @@ import React from 'react';
 import PackTotalsContainer from "./PackTotalsContainer"
 import CategoryListContainer from "./CategoryListContainer"
 import ModalContainer from "./ModalContainer"
+import LogoutButton from "./LogoutButton"
 
 
 const Editor = (props) => {
@@ -9,6 +10,7 @@ const Editor = (props) => {
     return (
       <div>
         <ModalContainer/>
+        <LogoutButton/>
         <PackTotalsContainer/>
         <CategoryListContainer/>
       </div>

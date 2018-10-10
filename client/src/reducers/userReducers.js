@@ -9,7 +9,7 @@ const initialState = {
 function user(state = initialState, action){
   switch(action.type){
     case "SET_USER":
-      return action.user
+      return (action.user !== null) ? action.user : initialState
     default:
       return state
   }

@@ -44,6 +44,7 @@ export function login(form){
       dispatch(clearForm());
     })
     .catch((err) => {
+    //need error handling int he form
     })
   }
 }
@@ -56,7 +57,6 @@ export function register(form){
       password_confitmation: form.passwordConfitmation
     })
     .then((response) => {
-      debugger;
       dispatch(setUser({
         "access-token": response.headers["access-token"],
         "token-type": response.headers["token-type"],
@@ -68,7 +68,23 @@ export function register(form){
       dispatch(clearForm());
     })
     .catch((err) => {
-      debugger
+    //need error handling in the form
+    })
+  }
+}
+
+export function logout(){
+  return function(dispatch){
+    axios.delete('/auth/sign_out')
+    .then((response) => {
+      //set user to initial state which is empty and logged out
+      dispatch(setUser());
+
+      //clear user from local storage
+      localStorage.removeItem("user");
+    })
+    .catch((err) => {
+    //need some form of error handling
     })
   }
 }
