@@ -33,7 +33,7 @@ export function initializeAppData(){
   }
 }
 
-function syncToServer(){
+export function syncToServer(){
   return function(dispatch, getState){
     const state = getState();
 
