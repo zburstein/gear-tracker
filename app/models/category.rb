@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   belongs_to :pack
   has_many :gear_items, -> {order(created_at: :asc)}, dependent: :delete_all
+  delegate :user, :to => :pack, :allow_nil => true
 
   after_destroy -> {self.pack.update_weight(-self.weight_in_grams)}
 

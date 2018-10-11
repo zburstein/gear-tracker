@@ -1,6 +1,8 @@
 class GearItem < ApplicationRecord
   belongs_to :category
   has_one :pack, through: :category
+  delegate :user, :to => :pack, :allow_nil => true
+
 
   after_save  :update_category_weight, if: :overall_weight_changed?
   after_destroy -> {self.category.update_weight(-self.weight_in_grams * self.quantity) if self.weight_in_grams != 0}
