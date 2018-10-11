@@ -15,7 +15,6 @@ class PacksController < ApplicationController
 
   # POST /packs
   def create
-    debugger
     @pack = Pack.new(user: current_user)
     if @pack.save
       render "show.json.jbuilder"
