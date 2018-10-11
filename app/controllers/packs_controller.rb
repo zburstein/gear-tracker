@@ -1,13 +1,7 @@
 class PacksController < ApplicationController
 
-  include DeviseTokenAuth::Concerns::SetUserByToken
-  include DeviseTokenAuth::Concerns::ResourceFinder
-  include DeviseTokenAuth::Concerns::ResourceFinder
-
-
   before_action :set_pack, only: [:show, :update, :destroy, :categories]
-  #before_action :authenticate_user!
-  #before_action :set_user_by_token
+  before_action :authenticate_user!
 
   # GET /packs
   def index
