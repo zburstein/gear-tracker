@@ -5,6 +5,7 @@ class PacksController < ApplicationController
 
   # GET /packs
   def index
+    @packs = current_user.packs.order(created_at: "ASC")
     render "index.json.jbuilder"
   end
 
