@@ -1,5 +1,7 @@
 class GearItemsController < ApplicationController
   before_action :set_gear_item, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+
 
   # GET /gear_items
   def index
