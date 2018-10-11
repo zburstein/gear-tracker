@@ -5,7 +5,7 @@ import { logout } from '../actions/userFormActions'
 
 let LogoutButton = ({ dispatch }) => {
   return (
-    <button onClick={() => dispatch(logout())} className="btn btn-primary">
+    <button type="button" onClick={() => dispatch(logout())} className="btn btn-primary">
       Logout
     </button>
   );
