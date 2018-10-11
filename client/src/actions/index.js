@@ -40,7 +40,6 @@ export function syncToServer(){
     //get packs
     axios.get(`/packs`)
     .then((response) =>{
-
       var newCurrentPack;
 
       //if all the packs have been deleted then set it to null

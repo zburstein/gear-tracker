@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {setUser} from "./userActions"
-import {syncToServer} from "./index"
+import {getPacks} from "./packActions"
 
 
 
@@ -41,7 +41,7 @@ export function login(form){
         uid: response.headers["uid"],
         loggedIn: true
       }));
-      dispatch(syncToServer());
+      dispatch(getPacks());
       dispatch(clearForm());
     })
     .catch((err) => {
