@@ -5,7 +5,7 @@ class GearItemsController < ApplicationController
 
   # GET /gear_items
   def index
-    @gear_items = GearItem.all
+    @gear_items = current_user.gear_items.order(created_at: "ASC")
 
     render json: @gear_items
   end
