@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {setUser} from "./userActions"
 import {getPacks} from "./packActions"
+import {errorMessages} from "../errorMessages"
+import {addAlert} from "./alertActions"
+
 
 
 
@@ -45,7 +48,7 @@ export function login(form){
       dispatch(clearForm());
     })
     .catch((err) => {
-    //need error handling int he form
+      dispatch(addAlert(err.response.data.errors));
     })
   }
 }
@@ -69,7 +72,8 @@ export function register(form){
       dispatch(clearForm());
     })
     .catch((err) => {
-    //need error handling in the form
+
+      dispatch(addAlert(err.response.data.errors.full_messages));
     })
   }
 }
@@ -85,7 +89,7 @@ export function logout(){
       localStorage.removeItem("user");
     })
     .catch((err) => {
-    //need some form of error handling
+      dispatch(addAlert(err.response.data.errors));
     })
   }
 }
